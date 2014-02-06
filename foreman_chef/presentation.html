@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Foreman integration with Chef</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="/usr/lib/python2.7/site-packages/landslide/themes/default/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="/usr/lib/python2.7/site-packages/landslide/themes/default/css/screen.css">
+    
+    
+      
+      <link rel="stylesheet" href="custom.css">
+      
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="/usr/lib/python2.7/site-packages/landslide/themes/default/js/slides.js"></script>
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Foreman integration with Chef</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>BIO</h1></header>
+            
+            
+            <section><ul>
+<li>Marek Hulán</li>
+<li>IRC: mhulan #theforeman on freenode</li>
+<li>GitHub: ares</li>
+<li>work @ RedHat on Foreman project</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Overview of this presentation</h1></header>
+            
+            
+            <section><ol>
+<li>Briefly show Foreman provisioning</li>
+<li>Status of Chef integration including live demo</li>
+<li>Future steps of further integration</li>
+<li>Other config management tools</li>
+</ol></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Meet Foreman</h1></header>
+            
+            
+            <section><p><br />
+<br />
+<img alt="foreman" src="foreman.png" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Puppet workflow overiew</h1></header>
+            
+            
+            <section><p><img alt="puppet" src="puppet.svg" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>What do we support for chef world</h1></header>
+            
+            
+            <section><p><img alt="chef" src="chef.svg" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Infrastrucure for this demo</h1></header>
+            
+            
+            <section><p><img alt="infra" src="infra.svg" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Authentication</h1></header>
+            
+            
+            <section><p><img alt="authentication" src="authentication.svg" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Let's see some action</h1></header>
+            
+            
+            <section><p><br />
+<br />
+<br />
+<br />
+<img alt="action" src="action.jpg" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Further integration</h1></header>
+            
+            
+            <section><ul>
+<li>Do we want to manage runlist and attributes in foreman?</li>
+<li>Is chef "source of truth"?</li>
+<li>Two way synchronization between Foreman and Chef?</li>
+<li>Do we want Foreman to become new Chef UI?</li>
+</ul>
+<p><img alt="needyou" src="needyou.jpg" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Support for other config management tools</h1></header>
+            
+            
+            <section><p>Facts upload format</p>
+<div class="highlight"><pre><span class="lineno"> 1</span> <span class="p">{</span>
+<span class="lineno"> 2</span>   <span class="nt">&quot;name&quot;</span>    <span class="p">:</span> <span class="s2">&quot;fqdn.example.com&quot;</span><span class="p">,</span>
+<span class="lineno"> 3</span>   <span class="nt">&quot;certname&quot;</span><span class="p">:</span> <span class="s2">&quot;optional.certname.for.this.host&quot;</span><span class="p">,</span>
+<span class="lineno"> 4</span>   <span class="nt">&quot;facts&quot;</span>   <span class="p">:</span> <span class="p">{</span>
+<span class="lineno"> 5</span>                 <span class="nt">&quot;fact1&quot;</span>                 <span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+<span class="lineno"> 6</span>                 <span class="nt">&quot;fact2&quot;</span>                 <span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+<span class="lineno"> 7</span>                 <span class="nt">&quot;fact2::nested::fact&quot;</span>   <span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+<span class="lineno"> 8</span>                 <span class="nt">&quot;_timestamp&quot;</span>            <span class="p">:</span> <span class="s2">&quot;2013-10-18 07:47:45 +0000&quot;</span><span class="p">,</span>
+<span class="lineno"> 9</span>                 <span class="nt">&quot;_type&quot;</span>                 <span class="p">:</span> <span class="s2">&quot;puppet&quot;</span><span class="p">,</span>
+<span class="lineno">10</span>                 <span class="nt">&quot;operatingsystem&quot;</span>       <span class="p">:</span> <span class="s2">&quot;Debian&quot;</span><span class="p">,</span>
+<span class="lineno">11</span>                 <span class="nt">&quot;operatingsystemrelease&quot;</span><span class="p">:</span> <span class="s2">&quot;7.0&quot;</span>
+<span class="lineno">12</span>               <span class="p">}</span>
+<span class="lineno">13</span> <span class="p">}</span>
+</pre></div>
+
+<p><a href="http://projects.theforeman.org/projects/foreman/wiki/Json-fact-format">http://projects.theforeman.org/projects/foreman/wiki/Json-fact-format</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Support for other config management tools</h1></header>
+            
+            
+            <section><p>Reports upload format</p>
+<div class="highlight"><pre><span class="lineno"> 1</span> <span class="p">{</span>
+<span class="lineno"> 2</span>  <span class="s2">&quot;host&quot;</span>       <span class="p">:</span> <span class="s2">&quot;fqdn.example.com&quot;</span><span class="p">,</span>
+<span class="lineno"> 3</span>  <span class="s2">&quot;reported_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-10-18 06:58:09 UTC&quot;</span><span class="p">,</span>          
+<span class="lineno"> 4</span>  <span class="s2">&quot;status&quot;</span>     <span class="p">:</span> <span class="p">{</span>  <span class="s2">&quot;applied&quot;</span>        <span class="p">:</span> <span class="n">n</span><span class="p">,</span>          
+<span class="lineno"> 5</span>                    <span class="s2">&quot;restarted&quot;</span>      <span class="p">:</span> <span class="n">n</span><span class="p">,</span>          
+<span class="lineno"> 6</span>                    <span class="s2">&quot;failed&quot;</span>         <span class="p">:</span> <span class="n">n</span><span class="p">,</span>          
+<span class="lineno"> 7</span>                    <span class="s2">&quot;failed_restarts&quot;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span>          
+<span class="lineno"> 8</span>                    <span class="s2">&quot;skipped&quot;</span>        <span class="p">:</span> <span class="n">n</span><span class="p">,</span>          
+<span class="lineno"> 9</span>                    <span class="s2">&quot;pending&quot;</span>        <span class="p">:</span> <span class="n">n</span>           
+<span class="lineno">10</span>                  <span class="p">},</span>
+<span class="lineno">11</span>  <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;resources&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;total&#39;</span> <span class="p">:</span> <span class="n">n</span> <span class="p">}</span>          
+<span class="lineno">12</span>                <span class="s2">&quot;time&quot;</span>    <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;resource_type1&quot;</span> <span class="p">:</span> <span class="n">n</span><span class="p">,</span>  
+<span class="lineno">13</span>                              <span class="s2">&quot;resource_type2&quot;</span> <span class="p">:</span> <span class="n">n</span><span class="p">,</span>  
+<span class="lineno">14</span>                              <span class="s2">&quot;total&quot;</span>          <span class="p">:</span> <span class="n">n</span>  <span class="p">}</span>
+<span class="lineno">15</span>              <span class="p">},</span>
+<span class="lineno">16</span>  <span class="s2">&quot;logs&quot;</span><span class="p">:</span> <span class="o">[</span> 
+<span class="lineno">17</span>             <span class="p">{</span> <span class="s2">&quot;log&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;sources&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;source&quot;</span>  <span class="p">:</span> <span class="s2">&quot;resource name&quot;</span> <span class="p">},</span>   
+<span class="lineno">18</span>                        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;message&quot;</span> <span class="p">:</span> <span class="s2">&quot;resource message&quot;</span> <span class="p">},</span>
+<span class="lineno">19</span>                        <span class="s2">&quot;level&quot;</span>   <span class="p">:</span> <span class="s2">&quot;notice&quot;</span> <span class="p">}</span>                         
+<span class="lineno">20</span>             <span class="p">}</span>
+<span class="lineno">21</span>           <span class="o">]</span>
+<span class="lineno">22</span> <span class="p">}</span>
+</pre></div>
+
+<p><a href="http://projects.theforeman.org/projects/foreman/wiki/Json-report-format">http://projects.theforeman.org/projects/foreman/wiki/Json-report-format</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Most important notes</h1></header>
+            
+            
+            <section><ul>
+<li>We need to hear your stories</li>
+<li>You can already use foreman for provisioning, monitoring and inventory listing with Chef</li>
+<li>We want to go deeper
+<br />
+<br />
+<img alt="chefo" src="chefo.png" />
+<img alt="chefhelmet" src="chefhelmet.jpg" /></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Links</h1></header>
+            
+            
+            <section><ul>
+<li><b>IRC:</b> #theforeman @ freenode</li>
+<li><b>Project wiki:</b> <a href="http://projects.theforeman.org/projects/foreman/wiki/Chef-support">projects.theforeman.org/projects/foreman/wiki/Chef-support</a></li>
+<li><b>chef-client extension:</b> <a href="https://github.com/theforeman/chef-handler-foreman">github.com/theforeman/chef-handler-foreman</a></li>
+<li><b>foreman attributes plugin:</b> <br /> <a href="https://github.com/theforeman/foreman_chef">github.com/theforeman/foreman_chef</a></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: foreman_chef.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Questions</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="foreman_chef.md">foreman_chef.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Foreman integration with Chef</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">BIO</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">Overview of this presentation</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Meet Foreman</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Puppet workflow overiew</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">What do we support for chef world</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Infrastrucure for this demo</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Authentication</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Let's see some action</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">Further integration</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Support for other config management tools</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Support for other config management tools</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">Most important notes</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">Links</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">Questions</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>
