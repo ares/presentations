@@ -1,0 +1,3326 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Programovací jazyk Ruby (PRUBY)</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="/usr/lib/python2.7/site-packages/landslide/themes/default/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="/usr/lib/python2.7/site-packages/landslide/themes/default/css/screen.css">
+    
+    
+      
+      <link rel="stylesheet" href="custom.css">
+      
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="/usr/lib/python2.7/site-packages/landslide/themes/default/js/slides.js"></script>
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Programovací jazyk Ruby (PRUBY)</h1></header>
+            
+            
+            <section><ul>
+<li>Marek Hulán</li>
+<li>mhulan@seznam.cz</li>
+<li>IRC: mhulan #theforeman @freenode</li>
+<li>GitHub: ares</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Základní vlastnosti jazyka</h1></header>
+            
+            
+            <section><ul>
+<li>Interpretovaný</li>
+<li>Plně objektový</li>
+<li>Vše jsou výrazy (expression)</li>
+<li>Automatická správa paměti</li>
+<li>Silně typovaný</li>
+<li>Dynamicky typovaný</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre> <span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span>
+ <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Instalace</h1></header>
+            
+            
+            <section><ul>
+<li>standardní balíčkovací systémy</li>
+<li>na Windows existuje one-click installer</li>
+<li>je možné i kompilovat ze zdrojového kódu (MIT)</li>
+<li>http://rubyinstaller.org/downloads/</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Jak spouštět ruby</h1></header>
+            
+            
+            <section><ul>
+<li>ruby -v</li>
+<li>ruby skript.rb</li>
+<li>shebang nebo asociace souborů</li>
+<li>irb - interactive ruby</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Co dál budeme potřebovat</h1></header>
+            
+            
+            <section><ul>
+<li>git, github</li>
+<li>textový editor - https://atom.io</li>
+<li>angličtina na základní úrovni</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Základy syntaxe</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="nb">puts</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">);</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Základy syntaxe</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="nb">puts</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">);</span>
+<span class="nb">puts</span> <span class="s2">&quot;hello world!&quot;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Základy syntaxe</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="nb">puts</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">);</span>
+<span class="nb">puts</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="nb">puts</span> <span class="s1">&#39;hello wolrd!&#39;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Základy syntaxe</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="nb">puts</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">);</span>
+<span class="nb">puts</span> <span class="s2">&quot;hello world!&quot;</span>
+<span class="nb">puts</span> <span class="s1">&#39;hello wolrd!&#39;</span>
+
+<span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>         <span class="c1"># =&gt; 2</span>
+<span class="mi">1</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span>     <span class="c1"># =&gt; 1</span>
+<span class="mi">1</span><span class="o">.</span><span class="mi">0</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span>   <span class="c1"># =&gt; 1.5</span>
+
+<span class="mi">1</span><span class="o">.</span><span class="n">even?</span>               <span class="c1"># =&gt; false</span>
+<span class="s2">&quot;ruby&quot;</span><span class="o">.</span><span class="n">upcase</span><span class="o">.</span><span class="n">reverse</span> <span class="c1"># =&gt; &#39;YRUB&#39;</span>
+<span class="s2">&quot;ruby&quot;</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">even?</span>     <span class="c1"># =&gt; true</span>
+<span class="c1"># single line comment</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Datové typy - ukázky</h1></header>
+            
+            
+            <section><ul>
+<li>stringy</li>
+<li>číslo (Fixnum, Float)</li>
+<li>nil</li>
+<li>true, false (TrueClass, FalseClass)</li>
+<li>pole</li>
+<li>hash</li>
+<li>symbol</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Objekty a metody</h1></header>
+            
+            
+            <section><ul>
+<li>tečka znamená volání metody na daném objektu</li>
+<li>operátory jsou také metody</li>
+</ul>
+<p>ekvivalentní výrazy</p>
+<div class="highlight"><pre><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="mi">3</span><span class="o">.</span><span class="n">+</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
+<span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">].</span><span class="n">[</span><span class="o">]</span> <span class="mi">0</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Proměnné</h1></header>
+            
+            
+            <section><ul>
+<li>není třeba explicitní deklarace</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre><span class="vg">$global</span>
+<span class="vc">@@class_variable</span>
+<span class="vi">@instance_variable</span>
+<span class="n">local_variable</span>
+<span class="no">CONSTANT</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;3&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">a</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="o">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">]</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Řízení běhu programu - if</h1></header>
+            
+            
+            <section><ul>
+<li>za nepravdu se považuje pouze false a nil</li>
+<li>prázdné stringy, prázdná pole i hashe, čísla jsou pravdivé hodnoty</li>
+</ul>
+<p>příklad</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="n">a</span>
+  <span class="mi">1</span>
+<span class="k">elsif</span> <span class="n">b</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span>
+  <span class="mi">2</span>
+<span class="k">else</span>
+  <span class="mi">3</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Řízení běhu programu</h1></header>
+            
+            
+            <section><p>Negativni varianta</p>
+<div class="highlight"><pre><span class="k">unless</span> <span class="n">locked</span>
+  <span class="c1"># locked is false or nil</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>Tzv.  statement modifiers</p>
+<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reverse</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span>
+
+<span class="nb">puts</span> <span class="s1">&#39;hello&#39;</span> <span class="k">unless</span> <span class="n">muted</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Logické operátory</h1></header>
+            
+            
+            <section><ul>
+<li>běžné logické operátory: <code>&amp;&amp;</code> <code>||</code> <code>!</code></li>
+<li>operátory pro řízení běhu: <code>and</code> <code>or</code></li>
+<li>porovnávací operátory: <code>==</code> <code>&lt;</code> <code>&gt;</code> <code>&gt;=</code> <code>&gt;=</code> <code>=~</code></li>
+<li>líné vyhodnocování a nelíné varianty <code>&amp;</code> a <code>|</code></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Ternární operátor</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">if</span> <span class="n">important</span>
+  <span class="n">string</span><span class="o">.</span><span class="n">upcase</span>
+<span class="k">else</span>
+  <span class="n">string</span><span class="o">.</span><span class="n">downcase</span>
+<span class="k">end</span>
+
+<span class="n">important</span> <span class="p">?</span> <span class="n">string</span><span class="o">.</span><span class="n">upcase</span> <span class="p">:</span> <span class="n">string</span><span class="o">.</span><span class="n">downcase</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="n">even?</span> <span class="p">?</span> <span class="s1">&#39;win&#39;</span> <span class="p">:</span> <span class="s1">&#39;lose&#39;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Řízení běhu programu - case</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">case</span> <span class="n">input</span>
+<span class="k">when</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span>
+  <span class="n">quit</span>
+<span class="k">when</span> <span class="s1">&#39;f&#39;</span>
+  <span class="n">format_hdd</span>
+<span class="k">when</span> <span class="s1">&#39;h&#39;</span>
+  <span class="n">help</span>
+<span class="k">else</span>
+  <span class="n">unknown_input</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Řízení běhu programu - while</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span>          <span class="c1"># until a &gt; b</span>
+  <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>             <span class="c1">#   a += 1</span>
+<span class="k">end</span>                  <span class="c1"># end</span>
+
+<span class="k">while</span> <span class="kp">true</span>
+  <span class="nb">sleep</span> <span class="mi">1</span>            <span class="c1"># one second</span>
+  <span class="k">break</span> <span class="k">if</span> <span class="n">finished?</span>
+<span class="k">end</span>
+
+<span class="k">begin</span>                <span class="c1"># at least once</span>
+  <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">end</span> <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span>
+
+<span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span> <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Metody</h1></header>
+            
+            
+            <section><ul>
+<li>vždy vrací hodnotu - výsledek posledního výrazu</li>
+<li>return ukončí běh předčasně</li>
+<li>mohou akceptovat lib. množství argumentů</li>
+</ul>
+<p>ukázka definice a volání</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">say_hello</span>
+  <span class="nb">puts</span> <span class="s1">&#39;hello world&#39;</span>
+<span class="k">end</span>
+
+<span class="n">say_hello</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Metody - argumenty</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="ss">a</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="ss">b</span><span class="p">:</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="c1"># ruby 2.0</span>
+<span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="ss">a</span><span class="p">:,</span> <span class="ss">b</span><span class="p">:)</span>         <span class="c1"># ruby 2.1</span>
+</pre></div>
+
+<p>argumenty jsou dostupné uvnitř metody jako lokální proměnné viz ukázka</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Metody - návratová hodnota</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">def</span> <span class="nf">find_position</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">needle</span><span class="p">)</span>
+  <span class="k">return</span> <span class="kp">nil</span> <span class="k">unless</span> <span class="n">array</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">needle</span><span class="p">)</span>
+
+  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.array</span><span class="o">.</span><span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">i</span> <span class="k">if</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">needle</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">minimal_allocation</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+  <span class="n">allocate_size</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="mi">3</span>
+  <span class="mi">5</span> <span class="k">if</span> <span class="n">allocate_size</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              21/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Konvence - soubory, jmena, nazvy metod</h1></header>
+            
+            
+            <section><ul>
+<li>soubory jsou shodné s názvy tříd, které definují</li>
+<li>proměnné a metody <code>pomoci_snake_case</code></li>
+<li>jména tříd <code>CamelCase</code> (více později)</li>
+<li>konstanty <code>VELKYM_PISMEM</code></li>
+<li>odsazuje se dvěma mezerami</li>
+<li>metody vracející true/false končí otazníkem</li>
+<li>metody dělající nečekané věci končí vykřičníkem</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>První úloha - implementace metod</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              23/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Skripty složené z  více souborů</h1></header>
+            
+            
+            <section><ul>
+<li>pro načtení jiného souboru použijeme <code>require</code></li>
+<li>pokud již soubor v daném procesu requirován byl, require se přeskočí</li>
+<li>require hledá ve standardní cestě Ruby knihoven, případně dle zadané cesty</li>
+<li>cestu je možné měnit - $LOAD_PATH</li>
+<li><code>load</code> načítá soubor opakovaně</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              24/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Bloky</h1></header>
+            
+            
+            <section><ul>
+<li>je lepší se vyhnout klasickým for-cyklům</li>
+<li>nechceme vypsat 1. až 5. prvek, ale každý prvek</li>
+</ul>
+<p>metoda akceptující blok - each</p>
+<div class="highlight"><pre><span class="n">array</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="n">item</span><span class="o">.</span><span class="n">upcase</span>
+<span class="k">end</span>
+
+<span class="n">array</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">item</span><span class="o">.</span><span class="n">upcase</span> <span class="p">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              25/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Bloky</h1></header>
+            
+            
+            <section><ul>
+<li>jsou kusy kódu, které se ihned neprovádí</li>
+<li>vidí proměnné ve stejném scopu</li>
+<li>každá metoda může akceptovat blok</li>
+</ul>
+<p>příklad s proměnnou</p>
+<div class="highlight"><pre><span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
+  <span class="n">sum</span> <span class="o">+=</span> <span class="n">number</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="k">end</span>
+<span class="nb">puts</span> <span class="n">sum</span>    <span class="c1"># =&gt; 14</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              26/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Iterátory</h1></header>
+            
+            
+            <section><ul>
+<li>iterátor je metoda volající blok</li>
+<li>blok může akceptovat parametry</li>
+<li>block_given? k testování, zda přišel blok</li>
+</ul>
+<p>vlastní iterátor</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">find_in</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+  <span class="k">return</span> <span class="kp">nil</span> <span class="k">unless</span> <span class="nb">block_given?</span>
+
+  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.array</span><span class="o">.</span><span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+    <span class="k">return</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="k">if</span> <span class="n">found</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">find_in</span><span class="p">(</span><span class="o">[</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span> <span class="o">]</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="n">power_of_2?</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">}</span> <span class="c1"># =&gt; 8</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              27/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Užitečné vestavěné iterátory</h1></header>
+            
+            
+            <section><ul>
+<li>each</li>
+<li>any? all?</li>
+<li>map</li>
+<li>find / detect</li>
+<li>find_all / select</li>
+<li>sort sort_by</li>
+<li>inject</li>
+</ul>
+<p>http://ruby-doc.org/core/Enumerable.html</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              28/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Blok jako objekt</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="n">action</span> <span class="o">=</span> <span class="n">block</span>
+  <span class="nb">name</span><span class="o">.</span><span class="n">upcase!</span>
+  <span class="nb">name</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="nb">name</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>Zejména vhodné pro uložení bloku na pozdější použití</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              29/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+            <section><p>!Ulohy na iteratory
+upravit ulohu 1 aby pouzivala iteratory
+skript ktery prevede string na morseovku
+skript ktery ji prevede zpet</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              30/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Ruby a objekty</h1></header>
+            
+            
+            <section><ul>
+<li>všechno v Ruby je objekt</li>
+<li>třída vs. instance vs. objekt</li>
+<li>atributy, metody, zasílání zpráv</li>
+</ul>
+<p>příklad definice</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">HelloWorld</span>
+  <span class="k">def</span> <span class="nf">say_hello</span>
+    <span class="nb">puts</span> <span class="s1">&#39;hello&#39;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">HelloWorld</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">say_hello</span>   <span class="c1"># prints hello</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              31/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Instanční proměnné / atributy</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">class</span> <span class="nc">HelloWorld</span>
+  <span class="k">def</span> <span class="nf">target</span><span class="o">=</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    <span class="vi">@target</span> <span class="o">=</span> <span class="n">target</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">target</span>
+    <span class="vi">@target</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">say_hello</span>
+    <span class="nb">puts</span> <span class="s2">&quot;hello </span><span class="si">#{</span><span class="vi">@target</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              32/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Instanční proměnné / atributy</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">class</span> <span class="nc">HelloWorld</span>
+  <span class="kp">attr_accessor</span> <span class="ss">:target</span>
+
+  <span class="k">def</span> <span class="nf">say_hello</span>
+    <span class="nb">puts</span> <span class="s2">&quot;hello </span><span class="si">#{</span><span class="vi">@target</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="no">HelloWorld</span><span class="o">.</span><span class="n">new</span>
+<span class="n">a</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;world&quot;</span>
+<span class="n">a</span><span class="o">.</span><span class="n">say_hello</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              33/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Konstruktor, destruktor, GC</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">class</span> <span class="nc">HelloWorld</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    <span class="vi">@target</span> <span class="o">=</span> <span class="n">target</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">say_hello</span>
+    <span class="nb">puts</span> <span class="s2">&quot;hello </span><span class="si">#{</span><span class="vi">@target</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="no">HelloWorld</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">say_hello</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              34/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Dědičnost</h1></header>
+            
+            
+            <section><ul>
+<li>dědí se všechny metody - tedy i konstruktor</li>
+<li>metody se mohou v potomcích předefinovávat</li>
+<li>volání předefinovávané metody - super</li>
+</ul>
+<p>dědící třída</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">LoggingHelloWorld</span> <span class="o">&lt;</span> <span class="no">HelloWorld</span>
+  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+
+<span class="no">LogginHelloWorld</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              35/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Třídní metody a atributy</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">class</span> <span class="nc">File</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="kp">new</span><span class="p">(</span><span class="n">sanitize</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+<ul>
+<li>třídní metody by neměly záviset na stavu objektu</li>
+<li>často vrací nové instance dané třídy</li>
+<li>třídní atributy jsou společné pro všechny instance, třídu i její potomky</li>
+<li>třídní atributy se příliš nepoužívají, zejména kvůli potomkům</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              36/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+            <section><p>Programovani</p>
+<p>vytvorte tridu MorseCoder ktera bude mit dve metody
+encode a decode, jejich implementace vezmene z e02_morse_*
+zmente implementaci tak, aby se oddelovac (|) nastavoval jako argument
+konstruktoru a symbol | byl vychozi hodnotou</p>
+<p>v ramci tridy MorseCoder implementujte pocitadlo, ktere se zvysi
+pokazde, kdyz se zavola metoda encode a decode. Implementujte
+tridni metodu, ktera vrati aktualni stav pocitadla</p>
+<p>vytvorte potomka tridy MorseCoder s nazvem VerifiableMorseCoder ktera
+bude definovat metodu verify, jejiz argument bude overovaci string,
+ktery zakoduje, dekoduje a pote overi ze vysledek je stejny jako byl
+vstup. Vysledek tedy bude bud true nebo false</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              37/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Monkey-patching</h1></header>
+            
+            
+            <section><ul>
+<li>nadefinované třídy je možné otvírat</li>
+<li>metody je možné předefinovávat</li>
+<li>umožňuje rozšiřování vestavěných objektů</li>
+<li>vhodné pouze v okrajových případech</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              38/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Vnořené třídy a moduly</h1></header>
+            
+            
+            <section><ul>
+<li>v Ruby nejsou jmenné prostrory</li>
+<li>lze docílit pomocí třídu a modulů</li>
+</ul>
+<p>obě varianty jsou možné</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">MyWorld</span>
+  <span class="k">class</span> <span class="nc">String</span><span class="p">;</span> <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nn">Helpers</span>
+  <span class="k">class</span> <span class="nc">String</span><span class="p">;</span> <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="ss">MyWorld</span><span class="p">:</span><span class="ss">:String</span><span class="o">.</span><span class="n">new</span>
+<span class="ss">Helpers</span><span class="p">:</span><span class="ss">:String</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              39/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Module include a extend, mixin</h1></header>
+            
+            
+            <section><ul>
+<li>modul může definovat metody</li>
+<li>metody modulu se nevolají přímo (*)</li>
+<li>modul je možné vložit do třídy</li>
+<li>include je vkládá jako instanční</li>
+<li>extend je vkládá jako třídní</li>
+<li>náhrada za násobnou dědičnost</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              40/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Module include a konflikty</h1></header>
+            
+            
+            <section><ul>
+<li>třída má přednost</li>
+<li>lookup chain - třída &gt; moduly &gt; rodič &gt; moduly rodiče ...</li>
+<li>pořadí modulů hraje roli</li>
+<li>funguje i <code>super</code>, takže je bezpečnější než příme přepisování metod</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              41/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+            <section><p>Programovani</p>
+<p>modul ktery bude lepe formatovat vystup morseovky, treba co slovo to radek</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              42/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Řízení přistupu</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">class</span> <span class="nc">HelloWorld</span>
+  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+  <span class="k">def</span> <span class="nf">say_hello</span>
+    <span class="n">prepare</span><span class="p">;</span> <span class="nb">puts</span> <span class="s2">&quot;hello </span><span class="si">#{</span><span class="vi">@target</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">prepare</span>
+    <span class="vi">@target</span><span class="o">.</span><span class="n">upcase!</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>možnosti jsou private, protected, public</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              43/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Metoda send a public_send</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">class</span> <span class="nc">A</span>
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">password</span>
+    <span class="s1">&#39;secret&#39;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">A</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:password</span><span class="p">)</span>        <span class="c1">#  =&gt; &#39;secret&#39;</span>
+<span class="n">A</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">public_send</span><span class="p">(</span><span class="ss">:password</span><span class="p">)</span> <span class="c1"># NoMethodError</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              44/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Duck typing</h1></header>
+            
+            
+            <section><p>"Když to kváká je to kachna"</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Hunter</span>
+  <span class="c1"># tradiční přístup s typovou kontrolou</span>
+  <span class="k">def</span> <span class="nf">shoot</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span>
+    <span class="n">bang!</span> <span class="k">if</span> <span class="n">animal</span><span class="o">.</span><span class="n">class</span> <span class="o">==</span> <span class="no">Duck</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Hunter</span>
+  <span class="c1"># duck-typing, kontrola rozhraní objektu</span>
+  <span class="k">def</span> <span class="nf">shoot</span><span class="p">(</span><span class="n">duck</span><span class="p">)</span>
+    <span class="n">duck</span><span class="o">.</span><span class="n">respond_to?</span><span class="p">(</span><span class="ss">:quack</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">bang!</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              45/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Duck typing</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="k">class</span> <span class="nc">Hunter</span>
+  <span class="k">def</span> <span class="nf">shoot</span><span class="p">(</span><span class="n">duck</span><span class="p">)</span>
+    <span class="n">duck</span><span class="o">.</span><span class="n">respond_to?</span><span class="p">(</span><span class="ss">:quack</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">bang!</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nn">Quacker</span>
+  <span class="k">def</span> <span class="nf">quack</span>
+    <span class="s1">&#39;quack quack!&#39;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="k">class</span> <span class="nc">Duck</span><span class="p">;</span> <span class="kp">include</span> <span class="no">Quacker</span><span class="p">;</span> <span class="k">end</span>
+<span class="k">class</span> <span class="nc">Frog</span><span class="p">;</span> <span class="kp">include</span> <span class="no">Quacker</span><span class="p">;</span> <span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              46/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Další metody introspekce objektu</h1></header>
+            
+            
+            <section><ul>
+<li>respond_to?(:method)</li>
+<li>is_a?(Integer) / kind_of?(Integer)</li>
+<li>instance_of?</li>
+<li>class</li>
+</ul>
+<p>další užitečné průzkumné metody</p>
+<ul>
+<li>methods</li>
+<li>included_modules</li>
+<li>inspect</li>
+<li>instance_variable_get</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              47/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Callback method_missing</h1></header>
+            
+            
+            <section><ul>
+<li>pokud dojde k zavolání nedefinované metody, můžeme chování upravit předefinováním method_missing</li>
+<li>vždy ošetřit else</li>
+<li>vždy volat super</li>
+<li>vždy také předefinovat respond_to_missing</li>
+</ul>
+<p>příklad s find_by_*</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              48/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+            <section><p>Programovani</p>
+<p>Do konstruktoru MorseCoder přidejte další argument "transmitter" jehož výchozí hodnota
+bude třída StandardTransmitter. Dále dodefinujte metodu transmit, ktera bude akceptovat
+jako jediný argument string, ktery nejprve zakóduje do morseovky a výsledek použije jako
+argument metody puts na transmitteru zadaném v konstruktoru.</p>
+<p>Dále nadefinujte třídu StandardTransmitter, která bude mít jedinou metodu puts. Tato
+metoda bude akceptovat jediný parametr, který vypíše na standardní výstup.</p>
+<p>Poté implementujte vlastní třídu DebugTransmitter, také s metodou puts, která svůj argument
+vytiskne jednak délku zadaného argumentu a poté argument samotný avšak upravený metodou
+inspect.</p>
+<p>Vyzkoušejte, že metoda transmit třídy MorseCode funguje s instancemi obou transmitterů.
+Vyzkoušejte jak se výstup liší pro transmit prázdného stringu u obou Transmitterů.</p>
+<p>Dále implementujte pomocí method_missing na třídě MorseCode rozhraní tak, aby volání
+metody s názvem jednoho písmenka abecedy vrátilo dané písmenko zakódované, tedy
+např. </p>
+<pre><code>coder = MorseCode.new('|', StandardTransmitter)
+coder.a # =&gt; '.-'
+coder.b # =&gt; '-...'
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              49/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Metaprogramování</h1></header>
+            
+            
+            <section><ul>
+<li>třídy jsou instance - metaclass / eigenclass</li>
+<li>metaprogramování = programování programování</li>
+<li>define_method (accessory)</li>
+<li>define_class</li>
+<li>send</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              50/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Výjimky</h1></header>
+            
+            
+            <section><ul>
+<li>signalizují výjimečný stav</li>
+<li>přerušují standardní tok programu</li>
+<li>nabalují cestu volání - backtrace</li>
+<li>raise / rescue</li>
+</ul>
+<p>odchycení nespecifické výjimky</p>
+<div class="highlight"><pre><span class="k">begin</span>
+  <span class="n">save!</span>
+<span class="k">rescue</span>
+  <span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              51/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Výjimky</h1></header>
+            
+            
+            <section><p>zpracování výjimky</p>
+<div class="highlight"><pre><span class="k">begin</span>
+  <span class="n">save!</span>
+<span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="nb">puts</span> <span class="s2">&quot;something gone wrong&quot;</span>
+  <span class="nb">puts</span> <span class="n">e</span><span class="o">.</span><span class="n">class</span>
+  <span class="nb">puts</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
+  <span class="nb">puts</span> <span class="n">e</span><span class="o">.</span><span class="n">backtrace</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              52/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Výjimky</h1></header>
+            
+            
+            <section><p>odchycení specifických výjimek</p>
+<div class="highlight"><pre><span class="k">begin</span>
+  <span class="n">save!</span>
+<span class="k">rescue</span> <span class="no">SaveError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="nb">puts</span> <span class="s2">&quot;saving failed: </span><span class="si">#{</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">rescue</span> <span class="no">StandardError</span>
+  <span class="nb">puts</span> <span class="s2">&quot;something weird happened, sorry&quot;</span>
+<span class="k">end</span>
+</pre></div>
+
+<ul>
+<li>výjimky jsou objekty</li>
+<li>rescue respektuje dedičnost</li>
+<li>exit a SystemExit</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              53/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Výjimky</h1></header>
+            
+            
+            <section><ul>
+<li>Exception<ul>
+<li>NoMemoryError</li>
+<li>ScriptError<ul>
+<li>SyntaxError</li>
+</ul>
+</li>
+<li>StandardError (výchozí pro rescue)<ul>
+<li>ArgumentError</li>
+<li>IOError</li>
+<li>NameError<ul>
+<li>NoMethodError</li>
+</ul>
+</li>
+<li>RuntimeError (výchozí pro raise)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              54/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Výjimky vs. řízení toku programu</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="n">treasure</span> <span class="o">=</span> <span class="kp">catch</span><span class="p">(</span><span class="ss">:found</span><span class="p">)</span> <span class="k">do</span>
+  <span class="n">mine_field</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span>
+    <span class="n">row</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
+      <span class="kp">throw</span><span class="p">(</span><span class="ss">:found</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">is_a?</span><span class="p">(</span><span class="no">Treasure</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="nb">puts</span> <span class="n">treasure</span>
+</pre></div>
+
+<ul>
+<li>vyhozen může být libovolný objekt</li>
+<li>součástí signálu může být hodnota</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              55/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Soubory</h1></header>
+            
+            
+            <section><ul>
+<li>filehandlery jsou instance třídy File</li>
+<li>obsahuje i další užitečné metody</li>
+</ul>
+<p>příklady</p>
+<div class="highlight"><pre><span class="no">File</span><span class="o">.</span><span class="n">exists?</span> <span class="s1">&#39;path/to/file&#39;</span>
+<span class="no">File</span><span class="o">.</span><span class="n">directory?</span> <span class="s1">&#39;/usr/bin&#39;</span>
+<span class="no">File</span><span class="o">.</span><span class="n">chmod</span> <span class="mo">0644</span><span class="p">,</span> <span class="s1">&#39;file.rb&#39;</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;my_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span> <span class="s1">&#39;my_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              56/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Soubory - módy otevření</h1></header>
+            
+            
+            <section><ul>
+<li>r – otevření souboru pro čtení (implicitní volba)</li>
+<li>r+ – otevření pro čtení i zápis, začíná se na začátku souboru</li>
+<li>w – otevření jen pro zápis, soubor je vytvořen nebo přepsán, pokud již existuje</li>
+<li>w+ – jako w, ale navíc i čtení</li>
+<li>a – jako w, ale soubor se nepřepíše, pokud existuje, začne se na konci souboru</li>
+<li>a+ – jako a, ale navíc i čtení</li>
+<li>b+ – binární mód na platformě MS Windows</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              57/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Soubory - čtení a zápis</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span> <span class="s1">&#39;my_file.txt&#39;</span>
+<span class="n">first_line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">gets</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span>
+
+<span class="no">File</span><span class="o">.</span><span class="n">open</span> <span class="s1">&#39;my_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+  <span class="n">file</span><span class="o">.</span><span class="n">puts</span> <span class="s1">&#39;hello world&#39;</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              58/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Soubory - granulárnější přístup</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">write</span> <span class="s1">&#39;string bez \n&#39;</span>
+<span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> 
+<span class="n">f</span><span class="o">.</span><span class="n">rewind</span>
+<span class="n">f</span><span class="o">.</span><span class="n">flush</span>
+<span class="n">f</span><span class="o">.</span><span class="n">eof?</span>
+<span class="n">f</span><span class="o">.</span><span class="n">getc</span>
+<span class="n">f</span><span class="o">.</span><span class="n">putc</span>
+<span class="n">f</span><span class="o">.</span><span class="n">pos</span>
+<span class="n">f</span><span class="o">.</span><span class="n">pos</span><span class="o">=</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              59/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Programování</h1></header>
+            
+            
+            <section><p>Přidejte kontrolu do konstruktoru MorseCode tak, aby byla vyhozena výjimka
+ArgumentError pokud transmitter neimplementuje metodu puts. Přečtěte soubor
+morse_input.txt a jeho obsah zakódujte pomocí MorseCode a DebugTransmitteru.
+Poté napiště skript, který jako transmitter použije soubor morse_output.txt
+jako transmitter. Pozor, soubor musí být otevřený pro zápis.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              60/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Timeout</h1></header>
+            
+            
+            <section><ul>
+<li>interní timeout pro blokující operace</li>
+<li>jednoduchá implementace, není atomická</li>
+</ul>
+<p>příklad</p>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;timeout&#39;</span>
+<span class="ss">Timeout</span><span class="p">:</span><span class="ss">:timeout</span><span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">do</span>
+  <span class="no">Database</span><span class="o">.</span><span class="n">load_data</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              61/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Sockety</h1></header>
+            
+            
+            <section><ul>
+<li>sockety stejně jako soubory dědí z IO</li>
+<li>typy socketů - unix, tcp, udp</li>
+</ul>
+<p>příklad klienta</p>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;socket&#39;</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">TCPSocket</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">3000</span>
+
+<span class="k">while</span> <span class="n">line</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">gets</span>
+  <span class="nb">puts</span> <span class="n">line</span>
+<span class="k">end</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">close</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              62/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Socket</h1></header>
+            
+            
+            <section><p>příklad serveru</p>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;socket&#39;</span>
+<span class="n">server</span> <span class="o">=</span> <span class="no">TCPServer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">accept</span>
+<span class="n">client</span><span class="o">.</span><span class="n">puts</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+<span class="n">client</span><span class="o">.</span><span class="n">close</span>
+</pre></div>
+
+<ul>
+<li>jakákoliv operace nad socketem může vyhodit Errno::EPIPE</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              63/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Thread</h1></header>
+            
+            
+            <section><p>Thread.new - hlavni program neceka
+musi se na nem zavolat join
+pole threadu
+Thread.current</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              64/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+            <section><p>threads - priklad se socketama - desifrujici server, port scanner - timeout</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              65/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+            <section><p>http
+https</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              66/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+            <section><p>programovani webscrapper</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              67/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+            <section><p>v záloze
+regularni vyrazy?
+logger?
+struct a openstruct?</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              68/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Rubygems</h1></header>
+            
+            
+            <section><ul>
+<li>balíčkovací systém</li>
+<li>http://rubygems.org</li>
+</ul>
+<p><br /></p>
+<div class="highlight"><pre>gem install bundler
+gem uninstall highline
+gem search rubocop
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              69/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Testy</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              70/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Tipy a triiky</h1></header>
+            
+            
+            <section><p>memoize i blokove
+rescue cele metody
+pry</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              71/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Programování</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              72/72
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Programovací jazyk Ruby (PRUBY)</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">Základní vlastnosti jazyka</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">Instalace</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Jak spouštět ruby</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Co dál budeme potřebovat</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">Základy syntaxe</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Základy syntaxe</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Základy syntaxe</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Základy syntaxe</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">Datové typy - ukázky</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Objekty a metody</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Proměnné</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">Řízení běhu programu - if</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">Řízení běhu programu</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">Logické operátory</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">Ternární operátor</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-17">
+        <th><a href="#slide17">Řízení běhu programu - case</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">Řízení běhu programu - while</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">Metody</a></th>
+        <td><a href="#slide19">19</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-20">
+        <th><a href="#slide20">Metody - argumenty</a></th>
+        <td><a href="#slide20">20</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-21">
+        <th><a href="#slide21">Metody - návratová hodnota</a></th>
+        <td><a href="#slide21">21</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-22">
+        <th><a href="#slide22">Konvence - soubory, jmena, nazvy metod</a></th>
+        <td><a href="#slide22">22</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-23">
+        <th><a href="#slide23">První úloha - implementace metod</a></th>
+        <td><a href="#slide23">23</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-24">
+        <th><a href="#slide24">Skripty složené z  více souborů</a></th>
+        <td><a href="#slide24">24</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-25">
+        <th><a href="#slide25">Bloky</a></th>
+        <td><a href="#slide25">25</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-26">
+        <th><a href="#slide26">Bloky</a></th>
+        <td><a href="#slide26">26</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-27">
+        <th><a href="#slide27">Iterátory</a></th>
+        <td><a href="#slide27">27</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-28">
+        <th><a href="#slide28">Užitečné vestavěné iterátory</a></th>
+        <td><a href="#slide28">28</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-29">
+        <th><a href="#slide29">Blok jako objekt</a></th>
+        <td><a href="#slide29">29</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-30">
+        <th><a href="#slide30">-</a></th>
+        <td><a href="#slide30">30</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-31">
+        <th><a href="#slide31">Ruby a objekty</a></th>
+        <td><a href="#slide31">31</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-32">
+        <th><a href="#slide32">Instanční proměnné / atributy</a></th>
+        <td><a href="#slide32">32</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-33">
+        <th><a href="#slide33">Instanční proměnné / atributy</a></th>
+        <td><a href="#slide33">33</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-34">
+        <th><a href="#slide34">Konstruktor, destruktor, GC</a></th>
+        <td><a href="#slide34">34</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-35">
+        <th><a href="#slide35">Dědičnost</a></th>
+        <td><a href="#slide35">35</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-36">
+        <th><a href="#slide36">Třídní metody a atributy</a></th>
+        <td><a href="#slide36">36</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-37">
+        <th><a href="#slide37">-</a></th>
+        <td><a href="#slide37">37</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-38">
+        <th><a href="#slide38">Monkey-patching</a></th>
+        <td><a href="#slide38">38</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-39">
+        <th><a href="#slide39">Vnořené třídy a moduly</a></th>
+        <td><a href="#slide39">39</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-40">
+        <th><a href="#slide40">Module include a extend, mixin</a></th>
+        <td><a href="#slide40">40</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-41">
+        <th><a href="#slide41">Module include a konflikty</a></th>
+        <td><a href="#slide41">41</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-42">
+        <th><a href="#slide42">-</a></th>
+        <td><a href="#slide42">42</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-43">
+        <th><a href="#slide43">Řízení přistupu</a></th>
+        <td><a href="#slide43">43</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-44">
+        <th><a href="#slide44">Metoda send a public_send</a></th>
+        <td><a href="#slide44">44</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-45">
+        <th><a href="#slide45">Duck typing</a></th>
+        <td><a href="#slide45">45</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-46">
+        <th><a href="#slide46">Duck typing</a></th>
+        <td><a href="#slide46">46</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-47">
+        <th><a href="#slide47">Další metody introspekce objektu</a></th>
+        <td><a href="#slide47">47</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-48">
+        <th><a href="#slide48">Callback method_missing</a></th>
+        <td><a href="#slide48">48</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-49">
+        <th><a href="#slide49">-</a></th>
+        <td><a href="#slide49">49</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-50">
+        <th><a href="#slide50">Metaprogramování</a></th>
+        <td><a href="#slide50">50</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-51">
+        <th><a href="#slide51">Výjimky</a></th>
+        <td><a href="#slide51">51</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-52">
+        <th><a href="#slide52">Výjimky</a></th>
+        <td><a href="#slide52">52</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-53">
+        <th><a href="#slide53">Výjimky</a></th>
+        <td><a href="#slide53">53</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-54">
+        <th><a href="#slide54">Výjimky</a></th>
+        <td><a href="#slide54">54</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-55">
+        <th><a href="#slide55">Výjimky vs. řízení toku programu</a></th>
+        <td><a href="#slide55">55</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-56">
+        <th><a href="#slide56">Soubory</a></th>
+        <td><a href="#slide56">56</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-57">
+        <th><a href="#slide57">Soubory - módy otevření</a></th>
+        <td><a href="#slide57">57</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-58">
+        <th><a href="#slide58">Soubory - čtení a zápis</a></th>
+        <td><a href="#slide58">58</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-59">
+        <th><a href="#slide59">Soubory - granulárnější přístup</a></th>
+        <td><a href="#slide59">59</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-60">
+        <th><a href="#slide60">Programování</a></th>
+        <td><a href="#slide60">60</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-61">
+        <th><a href="#slide61">Timeout</a></th>
+        <td><a href="#slide61">61</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-62">
+        <th><a href="#slide62">Sockety</a></th>
+        <td><a href="#slide62">62</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-63">
+        <th><a href="#slide63">Socket</a></th>
+        <td><a href="#slide63">63</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-64">
+        <th><a href="#slide64">Thread</a></th>
+        <td><a href="#slide64">64</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-65">
+        <th><a href="#slide65">-</a></th>
+        <td><a href="#slide65">65</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-66">
+        <th><a href="#slide66">-</a></th>
+        <td><a href="#slide66">66</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-67">
+        <th><a href="#slide67">-</a></th>
+        <td><a href="#slide67">67</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-68">
+        <th><a href="#slide68">-</a></th>
+        <td><a href="#slide68">68</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-69">
+        <th><a href="#slide69">Rubygems</a></th>
+        <td><a href="#slide69">69</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-70">
+        <th><a href="#slide70">Testy</a></th>
+        <td><a href="#slide70">70</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-71">
+        <th><a href="#slide71">Tipy a triiky</a></th>
+        <td><a href="#slide71">71</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-72">
+        <th><a href="#slide72">Programování</a></th>
+        <td><a href="#slide72">72</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>
