@@ -204,6 +204,23 @@ Tzv.  statement modifiers
 
 ---
 
+# Regulární výrazy
+
+
+    !ruby
+    string = 'localhost:2000'
+    string =~ /.*:.+/     # 0
+    string =~ /(.)*:(.)+/ # nastaví $1 a $2
+
+    # vrátí match data nebo nil
+    data = string.match(/^(.):(\d+)$/)
+    data[1] # => localhost
+    data[2] # => 2000
+
+pro víceřádkové stringy je třeba \A a \Z
+
+---
+
 # Ternární operátor
 
     !ruby
@@ -940,7 +957,8 @@ příklad serveru
     end
 
     t = Thread.new { ... }
-    t.join
+    t.join         # blokuje
+    t.value        # blokuje, vrací výsledek
     t.alive?
     t.status
 
@@ -959,7 +977,6 @@ příklad serveru
 
     t = Thread.new { ... }
     t.priority = 5
-    t.join
     t.kill t.terminate t.exit
 
 ---
@@ -1080,6 +1097,21 @@ inicializace v souboru
 
 ---
 
+# Testy - assertions
+
+    !ruby
+    assert arg            # arg is true
+    refute arg            # arg is false
+
+    assert_equal exp, act
+    assert_includes col, obj
+    assert_kind_of cls, obj
+    assert_nil
+    assert_match exp, act
+    assert_raises exc &block  
+
+---
+
 # Testy a stubování, mockování
 
 * testujeme pouze jednu část
@@ -1115,7 +1147,6 @@ inicializace v souboru
 
 v záloze
 struct 
-regularni vyrazy? - nekam na zacatek pridat
 logger? mozna do testu
 encoding
 
@@ -1123,8 +1154,7 @@ encoding
 
 # Tipy a triky a co se jinam nevešlo
 
-* Memoize patter (víceřádkové)
-* rescue celé metody
+* Memoize pattern (víceřádkové)
 * gem pry
 * [Popularita Ruby](http://www.tiobe.com/tiobe_index)
 * další implementace
@@ -1138,7 +1168,9 @@ encoding
 
 # Programování
 
-File system based databáze
-Todo.txt klient
-Facebook reminder
-Cokoliv vlastního
+* File system based databáze
+* Todo.txt klient
+* Intrusion detection system
+* Facebook reminder
+* IP kalkulačka
+* Cokoliv vlastního
