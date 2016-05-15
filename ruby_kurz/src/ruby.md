@@ -1,9 +1,26 @@
-# Programovací jazyk Ruby (PRUBY)
+# Kurz Programovací jazyk Ruby (PRUBY)
 
 * Marek Hulán
 * mhulan@seznam.cz
 * IRC: mhulan #theforeman @freenode
 * GitHub: ares
+
+![pcdir.png](pcdir.png)
+
+---
+
+# Struktura kurzu
+
+* každý den 9-17
+* přestávky dle potřeby
+* vlastní počítače
+* programovací úlohy
+* odkazy:
+    * [Tato prezentace](https://ares.github.io/presentations/ruby_kurz)
+    * [Etherpad](https://v.etherpad.org/p/ruby_kurz)
+    * [Ruby Warrior](https://www.bloc.io/ruby-warrior#/)
+    * [Ruby installer](https://rubyinstaller.org/downloads/)
+    * [Git installer](https://git-scm.com/download/win)
 
 ---
 
@@ -29,7 +46,7 @@
 * standardní balíčkovací systémy
 * na Windows existuje one-click installer
 * je možné i kompilovat ze zdrojového kódu (MIT)
-* http://rubyinstaller.org/downloads/
+* [https://rubyinstaller.org/downloads/](https://rubyinstaller.org/downloads/)
 
 ---
 
@@ -42,11 +59,11 @@
 
 ---
 
-# Co dál budeme potřebovat
+# Co budeme potřebovat
 
+* terminál
 * git, github
-* textový editor - https://atom.io
-* angličtina na základní úrovni
+* textový editor - [https://atom.io](https://atom.io)
 
 ---
 
@@ -162,7 +179,7 @@ příklad
 
 # Řízení běhu programu
 
-Negativni varianta
+Negativní varianta
 
     !ruby
     unless locked
@@ -287,7 +304,7 @@ argumenty jsou dostupné uvnitř metody jako lokální proměnné viz ukázka
 
 ---
 
-# Konvence - soubory, jmena, nazvy metod
+# Konvence - soubory, jména, názvy metod
 
 * soubory jsou shodné s názvy tříd, které definují
 * proměnné a metody `pomoci_snake_case`
@@ -299,16 +316,16 @@ argumenty jsou dostupné uvnitř metody jako lokální proměnné viz ukázka
 
 ---
 
-# První úloha - implementace metod
+# První úloha - E01 implementace metod
 
 ---
 
-# Skripty složené z  více souborů
+# Skripty složené z více souborů
 
 * pro načtení jiného souboru použijeme `require`
 * pokud již soubor v daném procesu requirován byl, require se přeskočí
 * require hledá ve standardní cestě Ruby knihoven, případně dle zadané cesty
-* cestu je možné měnit - $LOAD_PATH
+* cestu je možné měnit - `$LOAD_PATH`
 * `load` načítá soubor opakovaně
 
 ---
@@ -396,10 +413,10 @@ Zejména vhodné pro uložení bloku na pozdější použití
 
 ---
 
-!Ulohy na iteratory
-upravit ulohu 1 aby pouzivala iteratory
-skript ktery prevede string na morseovku
-skript ktery ji prevede zpet
+# Druhá úloha - E02 iterátory
+
+* vylepšení první úlohy
+* morseovka
 
 ---
 
@@ -509,21 +526,7 @@ dědící třída
 
 ---
 
-Programovani
-
-vytvorte tridu MorseCoder ktera bude mit dve metody
-encode a decode, jejich implementace vezmene z e02_morse_*
-zmente implementaci tak, aby se oddelovac (|) nastavoval jako argument
-konstruktoru a symbol | byl vychozi hodnotou
-
-v ramci tridy MorseCoder implementujte pocitadlo, ktere se zvysi
-pokazde, kdyz se zavola metoda encode a decode. Implementujte
-tridni metodu, ktera vrati aktualni stav pocitadla
-
-vytvorte potomka tridy MorseCoder s nazvem VerifiableMorseCoder ktera
-bude definovat metodu verify, jejiz argument bude overovaci string,
-ktery zakoduje, dekoduje a pote overi ze vysledek je stejny jako byl
-vstup. Vysledek tedy bude bud true nebo false
+# Třetí úloha - E03 MorseCoder, Bike
 
 ---
 
@@ -573,17 +576,16 @@ obě varianty jsou možné
 * třída má přednost
 * lookup chain - třída > moduly > rodič > moduly rodiče ...
 * pořadí modulů hraje roli
+* prepend je jako include, ale předbíhá tedy <br /> prepend moduly > třída > include moduly
 * funguje i `super`, takže je bezpečnější než příme přepisování metod
 
 ---
 
-Programovani
-
-modul ktery bude lepe formatovat vystup morseovky, treba co slovo to radek
+# Čtvrtá úloha - E04 rozšiřování objektů
 
 ---
 
-# Řízení přistupu
+# Řízení přístupu
 
     !ruby
     class HelloWorld
@@ -672,6 +674,7 @@ další užitečné průzkumné metody
 * included_modules
 * inspect
 * instance_variable_get
+* superclass
 
 ---
 
@@ -686,30 +689,7 @@ příklad s find_by_*
 
 ---
 
-Programovani
-
-Do konstruktoru MorseCoder přidejte další argument "transmitter" jehož výchozí hodnota
-bude třída StandardTransmitter. Dále dodefinujte metodu transmit, ktera bude akceptovat
-jako jediný argument string, ktery nejprve zakóduje do morseovky a výsledek použije jako
-argument metody puts na transmitteru zadaném v konstruktoru.
-
-Dále nadefinujte třídu StandardTransmitter, která bude mít jedinou metodu puts. Tato
-metoda bude akceptovat jediný parametr, který vypíše na standardní výstup.
-
-Poté implementujte vlastní třídu DebugTransmitter, také s metodou puts, která svůj argument
-vytiskne jednak délku zadaného argumentu a poté argument samotný avšak upravený metodou
-inspect.
-
-Vyzkoušejte, že metoda transmit třídy MorseCode funguje s instancemi obou transmitterů.
-Vyzkoušejte jak se výstup liší pro transmit prázdného stringu u obou Transmitterů.
-
-Dále implementujte pomocí method_missing na třídě MorseCode rozhraní tak, aby volání
-metody s názvem jednoho písmenka abecedy vrátilo dané písmenko zakódované, tedy
-např. 
-
-    coder = MorseCode.new('|', StandardTransmitter)
-    coder.a # => '.-'
-    coder.b # => '-...'
+# Pátá úloha - E05 transmittery, metaprogramování
 
 ---
 
@@ -717,7 +697,7 @@ např.
 
 * třídy jsou instance - metaclass / eigenclass
 * metaprogramování = programování programování
-* define_method (accessory)
+* define_method (accessory, příklad s Bike)
 * define_class
 * send
 
@@ -755,6 +735,8 @@ zpracování výjimky
       puts e.backtrace.join("\n")
       exit(1)
     end
+
+ensure - provede se vždy, např. zavření spojení
 
 ---
 
@@ -866,13 +848,23 @@ příklady
 
 ---
 
-# Programování
+# Parametry při spuštění
 
-Přidejte kontrolu do konstruktoru MorseCode tak, aby byla vyhozena výjimka
-ArgumentError pokud transmitter neimplementuje metodu puts. Přečtěte soubor
-morse_input.txt a jeho obsah zakódujte pomocí MorseCode a DebugTransmitteru.
-Poté napiště skript, který jako transmitter použije soubor morse_output.txt
-jako transmitter. Pozor, soubor musí být otevřený pro zápis.
+* Vestavěná konstanta ARGV
+
+<br>
+
+    !ruby
+    ARGV.size # v jiných jazycích ARGC
+    ARGV[0]   # v jiných jazycích
+              # název skriptu
+
+    # název skriptu
+    $0, __FILE__, $PROGRAM_NAME
+
+---
+
+# Šestá úloha - E06 soubory a výjimky
 
 ---
 
@@ -910,13 +902,13 @@ příklad klienta
 
 ---
 
-# Socket
+# Sockety
 
 příklad serveru
 
     !ruby
     require 'socket'
-    server = TCPServer.new("127.0.0.1", 3000)
+    server = TCPServer.new("10.0.1.2", 3000)
     client = server.accept
     client.puts Time.now
     client.close
@@ -925,38 +917,105 @@ příklad serveru
 
 ---
 
-# Thread
-
-Thread.new - hlavni program neceka
-musi se na nem zavolat join
-pole threadu
-Thread.current
+# Sedmá úloha - E07 Implementace transmitteru s TCP socketem
 
 ---
 
-threads - priklad se socketama - desifrujici server, port scanner - timeout
+# Thready
+
+* implementace využívající vlákna OS
+* proces může běžet na více jádrech
+* vždy jedno hlavní vlákno, které může spouštět další
+* konec hlavního zabije další vlákna
+* lze čekat na dokončení pomocí join
+* ruby kód nikdy neběží paralelně
 
 ---
 
-http
-https
+# Thready - příklady
+
+    !ruby
+    5.times do |i|
+      Thread.new { puts i }
+    end
+
+    t = Thread.new { ... }
+    t.join
+    t.alive?
+    t.status
+
+    Thread.current
+    Thread.main
+    Thread.abort_on_exception = true
+
 ---
 
-programovani webscrapper
+# Thready - další metody a ukázky
+
+    !ruby
+    Thread.list
+    Thread.stop
+    Thread.run
+
+    t = Thread.new { ... }
+    t.priority = 5
+    t.join
+    t.kill t.terminate t.exit
 
 ---
 
-v záloze
-regularni vyrazy?
-logger?
-struct a openstruct?
+# Thready - thread safe Queue
 
+    !ruby
+    queue = Queue.new
+    40.times { |i| queue.push i }
+    workers = (0..3).map do |worker_id|
+      Thread.new(worker_id) do |id|
+        begin
+          while (job = queue.pop(true)) # non-blocking
+            puts "#{job} take by worker #{id}"
+          end
+        rescue ThreadError              # pop on empty queue
+        end
+      end
+    end
+    workers.each(&:join)
+
+---
+
+# Osmá úloha
+
+* MorseServer na více portech
+* Port scanner
+* Bike race
+
+---
+
+# HTTP client
+
+    !ruby
+    require 'net/http'
+    Net::HTTP.get('google.com', '/index.html')
+
+    require "uri"
+    uri = URI.parse("http://google.com/")
+    
+    http = Net::HTTP.new(uri.host, uri.port)
+    req = Net::HTTP::Get.new(uri.request_uri)
+    
+    response = http.request(req)
+    response.code       # => 301
+    response.body       # => tělo dokumentu
+    response["expires"] # => -1
 ---
 
 # Rubygems
 
-* balíčkovací systém
-* http://rubygems.org
+* existuje obrovské množství knihoven
+* vlastní balíčkovací systém
+* verze, závislosti, nativní rozšíření
+* [http://rubygems.org](http://rubygems.org)
+* [https://www.ruby-toolbox.com/](https://www.ruby-toolbox.com/)
 
 <br />
 
@@ -967,16 +1026,119 @@ struct a openstruct?
 
 ---
 
-# Testy
+# Bundler
+
+* seznam závislostí v Gemfile
+* omezení verzí
+* bundle install
+* Gemfile.lock
+* bundle exec
+
+inicializace v souboru
+
+    !ruby
+    require 'rubygems'
+    require 'bundler/setup'
 
 ---
 
-# Tipy a triiky
+# Bežné datové formáty
 
-memoize i blokove
-rescue cele metody
-pry
+* YAML - load to_yaml
+* JSON - parse to_json
+* XML - např. gem nokogiri
+
+---
+
+# Devátá úloha - REST API a gemy
+
+---
+
+# Testy
+
+* proč je dobré psát automatizované testy
+* rozdíl mezi testy
+* v Ruby světe dvě syntaxe, jedna implementace
+* testy jsou ruby skripty testující jiné ruby skripty
+
+---
+
+# Testy
+
+    !ruby
+    require "minitest/autorun"
+    
+    class TestMorseCoder < Minitest::Test
+      def setup
+        @coder = MorseCoder.new(...)
+      end
+    
+      def test_encode_for_single_letters
+        assert_equal ".-", @coder.encode "a"
+      end
+    end
+
+---
+
+# Testy a stubování, mockování
+
+* testujeme pouze jednu část
+* netestované části se side-effecty stubujeme
+* mocky se používají jako testovací objekty
+* nejlepší je dobře navrhnout objekty
+
+---
+
+# Testy a stubování, mockování
+
+    !ruby
+    Kernel.stubs :puts, nil do
+      c = MorseCoder.new(DebugTransmitter.new)
+      assert_nil c.transmit('hello')
+    end
+
+    mock = Minitest::Mock.new
+    mock.expect :puts, nil, '.-'
+    MorseCoder.new(mock).transmit('a')
+    mock.verify
+
+    require 'ostruct'
+    os = OpenStruct.new :name => 'Favorit'
+    os.name             # => 'Favorit'
+    os.wheel_size = 26
+
+---
+
+# Desátá úloha - E10 Psaní testů
+
+---
+
+v záloze
+struct 
+regularni vyrazy? - nekam na zacatek pridat
+logger? mozna do testu
+encoding
+
+---
+
+# Tipy a triky a co se jinam nevešlo
+
+* Memoize patter (víceřádkové)
+* rescue celé metody
+* gem pry
+* [Popularita Ruby](http://www.tiobe.com/tiobe_index)
+* další implementace
+    - MRI
+    - JRuby
+    - Rubynius
+    - IronRuby, MagLev
+    - Ruboto
 
 ---
 
 # Programování
+
+File system based databáze
+Todo.txt klient
+Facebook reminder
+Cokoliv vlastního

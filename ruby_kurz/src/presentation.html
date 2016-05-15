@@ -25,7 +25,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Programovací jazyk Ruby (PRUBY)</title>
+    <title>Kurz Programovací jazyk Ruby (PRUBY)</title>
     <!-- Styles -->
     
     <link rel="stylesheet" media="print" href="/usr/lib/python2.7/site-packages/landslide/themes/default/css/print.css">
@@ -57,7 +57,7 @@
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Programovací jazyk Ruby (PRUBY)</h1></header>
+            <header><h1>Kurz Programovací jazyk Ruby (PRUBY)</h1></header>
             
             
             <section><ul>
@@ -65,6 +65,50 @@
 <li>mhulan@seznam.cz</li>
 <li>IRC: mhulan #theforeman @freenode</li>
 <li>GitHub: ares</li>
+</ul>
+<p><img alt="pcdir.png" src="pcdir.png" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/84
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Struktura kurzu</h1></header>
+            
+            
+            <section><ul>
+<li>každý den 9-17</li>
+<li>přestávky dle potřeby</li>
+<li>vlastní počítače</li>
+<li>programovací úlohy</li>
+<li>odkazy:<ul>
+<li><a href="https://ares.github.io/presentations/ruby_kurz">Tato prezentace</a></li>
+<li><a href="https://v.etherpad.org/p/ruby_kurz">Etherpad</a></li>
+<li><a href="https://www.bloc.io/ruby-warrior#/">Ruby Warrior</a></li>
+<li><a href="https://rubyinstaller.org/downloads/">Ruby installer</a></li>
+<li><a href="https://git-scm.com/download/win">Git installer</a></li>
+</ul>
+</li>
 </ul></section>
             
           </div>
@@ -81,7 +125,7 @@
             </aside>
             
             <aside class="page_number">
-              1/72
+              2/84
             </aside>
           </footer>
         </div>
@@ -123,7 +167,7 @@
             </aside>
             
             <aside class="page_number">
-              2/72
+              3/84
             </aside>
           </footer>
         </div>
@@ -141,7 +185,7 @@
 <li>standardní balíčkovací systémy</li>
 <li>na Windows existuje one-click installer</li>
 <li>je možné i kompilovat ze zdrojového kódu (MIT)</li>
-<li>http://rubyinstaller.org/downloads/</li>
+<li><a href="https://rubyinstaller.org/downloads/">https://rubyinstaller.org/downloads/</a></li>
 </ul></section>
             
           </div>
@@ -158,7 +202,7 @@
             </aside>
             
             <aside class="page_number">
-              3/72
+              4/84
             </aside>
           </footer>
         </div>
@@ -193,7 +237,7 @@
             </aside>
             
             <aside class="page_number">
-              4/72
+              5/84
             </aside>
           </footer>
         </div>
@@ -204,13 +248,13 @@
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Co dál budeme potřebovat</h1></header>
+            <header><h1>Co budeme potřebovat</h1></header>
             
             
             <section><ul>
+<li>terminál</li>
 <li>git, github</li>
-<li>textový editor - https://atom.io</li>
-<li>angličtina na základní úrovni</li>
+<li>textový editor - <a href="https://atom.io">https://atom.io</a></li>
 </ul></section>
             
           </div>
@@ -227,7 +271,7 @@
             </aside>
             
             <aside class="page_number">
-              5/72
+              6/84
             </aside>
           </footer>
         </div>
@@ -259,7 +303,7 @@
             </aside>
             
             <aside class="page_number">
-              6/72
+              7/84
             </aside>
           </footer>
         </div>
@@ -292,7 +336,7 @@
             </aside>
             
             <aside class="page_number">
-              7/72
+              8/84
             </aside>
           </footer>
         </div>
@@ -326,7 +370,7 @@
             </aside>
             
             <aside class="page_number">
-              8/72
+              9/84
             </aside>
           </footer>
         </div>
@@ -369,7 +413,7 @@
             </aside>
             
             <aside class="page_number">
-              9/72
+              10/84
             </aside>
           </footer>
         </div>
@@ -407,7 +451,7 @@
             </aside>
             
             <aside class="page_number">
-              10/72
+              11/84
             </aside>
           </footer>
         </div>
@@ -448,7 +492,7 @@
             </aside>
             
             <aside class="page_number">
-              11/72
+              12/84
             </aside>
           </footer>
         </div>
@@ -494,7 +538,7 @@
             </aside>
             
             <aside class="page_number">
-              12/72
+              13/84
             </aside>
           </footer>
         </div>
@@ -537,7 +581,7 @@
             </aside>
             
             <aside class="page_number">
-              13/72
+              14/84
             </aside>
           </footer>
         </div>
@@ -551,7 +595,7 @@
             <header><h1>Řízení běhu programu</h1></header>
             
             
-            <section><p>Negativni varianta</p>
+            <section><p>Negativní varianta</p>
 <div class="highlight"><pre><span class="k">unless</span> <span class="n">locked</span>
   <span class="c1"># locked is false or nil</span>
 <span class="k">end</span>
@@ -578,7 +622,7 @@
             </aside>
             
             <aside class="page_number">
-              14/72
+              15/84
             </aside>
           </footer>
         </div>
@@ -613,7 +657,7 @@
             </aside>
             
             <aside class="page_number">
-              15/72
+              16/84
             </aside>
           </footer>
         </div>
@@ -653,7 +697,7 @@
             </aside>
             
             <aside class="page_number">
-              16/72
+              17/84
             </aside>
           </footer>
         </div>
@@ -694,7 +738,7 @@
             </aside>
             
             <aside class="page_number">
-              17/72
+              18/84
             </aside>
           </footer>
         </div>
@@ -739,7 +783,7 @@
             </aside>
             
             <aside class="page_number">
-              18/72
+              19/84
             </aside>
           </footer>
         </div>
@@ -781,7 +825,7 @@
             </aside>
             
             <aside class="page_number">
-              19/72
+              20/84
             </aside>
           </footer>
         </div>
@@ -819,7 +863,7 @@
             </aside>
             
             <aside class="page_number">
-              20/72
+              21/84
             </aside>
           </footer>
         </div>
@@ -862,7 +906,7 @@
             </aside>
             
             <aside class="page_number">
-              21/72
+              22/84
             </aside>
           </footer>
         </div>
@@ -873,7 +917,7 @@
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Konvence - soubory, jmena, nazvy metod</h1></header>
+            <header><h1>Konvence - soubory, jména, názvy metod</h1></header>
             
             
             <section><ul>
@@ -900,7 +944,7 @@
             </aside>
             
             <aside class="page_number">
-              22/72
+              23/84
             </aside>
           </footer>
         </div>
@@ -911,7 +955,7 @@
         <div class="slide">
           <div class="inner">
             
-            <header><h1>První úloha - implementace metod</h1></header>
+            <header><h1>První úloha - E01 implementace metod</h1></header>
             
             
           </div>
@@ -928,7 +972,7 @@
             </aside>
             
             <aside class="page_number">
-              23/72
+              24/84
             </aside>
           </footer>
         </div>
@@ -939,14 +983,14 @@
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Skripty složené z  více souborů</h1></header>
+            <header><h1>Skripty složené z více souborů</h1></header>
             
             
             <section><ul>
 <li>pro načtení jiného souboru použijeme <code>require</code></li>
 <li>pokud již soubor v daném procesu requirován byl, require se přeskočí</li>
 <li>require hledá ve standardní cestě Ruby knihoven, případně dle zadané cesty</li>
-<li>cestu je možné měnit - $LOAD_PATH</li>
+<li>cestu je možné měnit - <code>$LOAD_PATH</code></li>
 <li><code>load</code> načítá soubor opakovaně</li>
 </ul></section>
             
@@ -964,7 +1008,7 @@
             </aside>
             
             <aside class="page_number">
-              24/72
+              25/84
             </aside>
           </footer>
         </div>
@@ -1005,7 +1049,7 @@
             </aside>
             
             <aside class="page_number">
-              25/72
+              26/84
             </aside>
           </footer>
         </div>
@@ -1047,7 +1091,7 @@
             </aside>
             
             <aside class="page_number">
-              26/72
+              27/84
             </aside>
           </footer>
         </div>
@@ -1094,7 +1138,7 @@
             </aside>
             
             <aside class="page_number">
-              27/72
+              28/84
             </aside>
           </footer>
         </div>
@@ -1133,7 +1177,7 @@
             </aside>
             
             <aside class="page_number">
-              28/72
+              29/84
             </aside>
           </footer>
         </div>
@@ -1171,7 +1215,7 @@
             </aside>
             
             <aside class="page_number">
-              29/72
+              30/84
             </aside>
           </footer>
         </div>
@@ -1182,11 +1226,13 @@
         <div class="slide">
           <div class="inner">
             
+            <header><h1>Druhá úloha - E02 iterátory</h1></header>
             
-            <section><p>!Ulohy na iteratory
-upravit ulohu 1 aby pouzivala iteratory
-skript ktery prevede string na morseovku
-skript ktery ji prevede zpet</p></section>
+            
+            <section><ul>
+<li>vylepšení první úlohy</li>
+<li>morseovka</li>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1202,7 +1248,7 @@ skript ktery ji prevede zpet</p></section>
             </aside>
             
             <aside class="page_number">
-              30/72
+              31/84
             </aside>
           </footer>
         </div>
@@ -1246,7 +1292,7 @@ skript ktery ji prevede zpet</p></section>
             </aside>
             
             <aside class="page_number">
-              31/72
+              32/84
             </aside>
           </footer>
         </div>
@@ -1290,7 +1336,7 @@ skript ktery ji prevede zpet</p></section>
             </aside>
             
             <aside class="page_number">
-              32/72
+              33/84
             </aside>
           </footer>
         </div>
@@ -1332,7 +1378,7 @@ skript ktery ji prevede zpet</p></section>
             </aside>
             
             <aside class="page_number">
-              33/72
+              34/84
             </aside>
           </footer>
         </div>
@@ -1375,7 +1421,7 @@ skript ktery ji prevede zpet</p></section>
             </aside>
             
             <aside class="page_number">
-              34/72
+              35/84
             </aside>
           </footer>
         </div>
@@ -1417,7 +1463,7 @@ skript ktery ji prevede zpet</p></section>
             </aside>
             
             <aside class="page_number">
-              35/72
+              36/84
             </aside>
           </footer>
         </div>
@@ -1459,7 +1505,7 @@ skript ktery ji prevede zpet</p></section>
             </aside>
             
             <aside class="page_number">
-              36/72
+              37/84
             </aside>
           </footer>
         </div>
@@ -1470,19 +1516,8 @@ skript ktery ji prevede zpet</p></section>
         <div class="slide">
           <div class="inner">
             
+            <header><h1>Třetí úloha - E03 MorseCoder, Bike</h1></header>
             
-            <section><p>Programovani</p>
-<p>vytvorte tridu MorseCoder ktera bude mit dve metody
-encode a decode, jejich implementace vezmene z e02_morse_*
-zmente implementaci tak, aby se oddelovac (|) nastavoval jako argument
-konstruktoru a symbol | byl vychozi hodnotou</p>
-<p>v ramci tridy MorseCoder implementujte pocitadlo, ktere se zvysi
-pokazde, kdyz se zavola metoda encode a decode. Implementujte
-tridni metodu, ktera vrati aktualni stav pocitadla</p>
-<p>vytvorte potomka tridy MorseCoder s nazvem VerifiableMorseCoder ktera
-bude definovat metodu verify, jejiz argument bude overovaci string,
-ktery zakoduje, dekoduje a pote overi ze vysledek je stejny jako byl
-vstup. Vysledek tedy bude bud true nebo false</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1498,7 +1533,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
             </aside>
             
             <aside class="page_number">
-              37/72
+              38/84
             </aside>
           </footer>
         </div>
@@ -1533,7 +1568,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
             </aside>
             
             <aside class="page_number">
-              38/72
+              39/84
             </aside>
           </footer>
         </div>
@@ -1579,7 +1614,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
             </aside>
             
             <aside class="page_number">
-              39/72
+              40/84
             </aside>
           </footer>
         </div>
@@ -1616,7 +1651,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
             </aside>
             
             <aside class="page_number">
-              40/72
+              41/84
             </aside>
           </footer>
         </div>
@@ -1634,6 +1669,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
 <li>třída má přednost</li>
 <li>lookup chain - třída &gt; moduly &gt; rodič &gt; moduly rodiče ...</li>
 <li>pořadí modulů hraje roli</li>
+<li>prepend je jako include, ale předbíhá tedy <br /> prepend moduly &gt; třída &gt; include moduly</li>
 <li>funguje i <code>super</code>, takže je bezpečnější než příme přepisování metod</li>
 </ul></section>
             
@@ -1651,7 +1687,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
             </aside>
             
             <aside class="page_number">
-              41/72
+              42/84
             </aside>
           </footer>
         </div>
@@ -1662,9 +1698,8 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
         <div class="slide">
           <div class="inner">
             
+            <header><h1>Čtvrtá úloha - E04 rozšiřování objektů</h1></header>
             
-            <section><p>Programovani</p>
-<p>modul ktery bude lepe formatovat vystup morseovky, treba co slovo to radek</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1680,7 +1715,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
             </aside>
             
             <aside class="page_number">
-              42/72
+              43/84
             </aside>
           </footer>
         </div>
@@ -1691,7 +1726,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Řízení přistupu</h1></header>
+            <header><h1>Řízení přístupu</h1></header>
             
             
             <section><div class="highlight"><pre><span class="k">class</span> <span class="nc">HelloWorld</span>
@@ -1724,7 +1759,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
             </aside>
             
             <aside class="page_number">
-              43/72
+              44/84
             </aside>
           </footer>
         </div>
@@ -1765,7 +1800,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
             </aside>
             
             <aside class="page_number">
-              44/72
+              45/84
             </aside>
           </footer>
         </div>
@@ -1810,7 +1845,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
             </aside>
             
             <aside class="page_number">
-              45/72
+              46/84
             </aside>
           </footer>
         </div>
@@ -1854,7 +1889,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
             </aside>
             
             <aside class="page_number">
-              46/72
+              47/84
             </aside>
           </footer>
         </div>
@@ -1880,6 +1915,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
 <li>included_modules</li>
 <li>inspect</li>
 <li>instance_variable_get</li>
+<li>superclass</li>
 </ul></section>
             
           </div>
@@ -1896,7 +1932,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
             </aside>
             
             <aside class="page_number">
-              47/72
+              48/84
             </aside>
           </footer>
         </div>
@@ -1932,7 +1968,7 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
             </aside>
             
             <aside class="page_number">
-              48/72
+              49/84
             </aside>
           </footer>
         </div>
@@ -1943,26 +1979,8 @@ vstup. Vysledek tedy bude bud true nebo false</p></section>
         <div class="slide">
           <div class="inner">
             
+            <header><h1>Pátá úloha - E05 transmittery, metaprogramování</h1></header>
             
-            <section><p>Programovani</p>
-<p>Do konstruktoru MorseCoder přidejte další argument "transmitter" jehož výchozí hodnota
-bude třída StandardTransmitter. Dále dodefinujte metodu transmit, ktera bude akceptovat
-jako jediný argument string, ktery nejprve zakóduje do morseovky a výsledek použije jako
-argument metody puts na transmitteru zadaném v konstruktoru.</p>
-<p>Dále nadefinujte třídu StandardTransmitter, která bude mít jedinou metodu puts. Tato
-metoda bude akceptovat jediný parametr, který vypíše na standardní výstup.</p>
-<p>Poté implementujte vlastní třídu DebugTransmitter, také s metodou puts, která svůj argument
-vytiskne jednak délku zadaného argumentu a poté argument samotný avšak upravený metodou
-inspect.</p>
-<p>Vyzkoušejte, že metoda transmit třídy MorseCode funguje s instancemi obou transmitterů.
-Vyzkoušejte jak se výstup liší pro transmit prázdného stringu u obou Transmitterů.</p>
-<p>Dále implementujte pomocí method_missing na třídě MorseCode rozhraní tak, aby volání
-metody s názvem jednoho písmenka abecedy vrátilo dané písmenko zakódované, tedy
-např. </p>
-<pre><code>coder = MorseCode.new('|', StandardTransmitter)
-coder.a # =&gt; '.-'
-coder.b # =&gt; '-...'
-</code></pre></section>
             
           </div>
           <div class="presenter_notes">
@@ -1978,7 +1996,7 @@ coder.b # =&gt; '-...'
             </aside>
             
             <aside class="page_number">
-              49/72
+              50/84
             </aside>
           </footer>
         </div>
@@ -1995,7 +2013,7 @@ coder.b # =&gt; '-...'
             <section><ul>
 <li>třídy jsou instance - metaclass / eigenclass</li>
 <li>metaprogramování = programování programování</li>
-<li>define_method (accessory)</li>
+<li>define_method (accessory, příklad s Bike)</li>
 <li>define_class</li>
 <li>send</li>
 </ul></section>
@@ -2014,7 +2032,7 @@ coder.b # =&gt; '-...'
             </aside>
             
             <aside class="page_number">
-              50/72
+              51/84
             </aside>
           </footer>
         </div>
@@ -2057,7 +2075,7 @@ coder.b # =&gt; '-...'
             </aside>
             
             <aside class="page_number">
-              51/72
+              52/84
             </aside>
           </footer>
         </div>
@@ -2082,7 +2100,8 @@ coder.b # =&gt; '-...'
   <span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
-</section>
+
+<p>ensure - provede se vždy, např. zavření spojení</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2098,7 +2117,7 @@ coder.b # =&gt; '-...'
             </aside>
             
             <aside class="page_number">
-              52/72
+              53/84
             </aside>
           </footer>
         </div>
@@ -2142,7 +2161,7 @@ coder.b # =&gt; '-...'
             </aside>
             
             <aside class="page_number">
-              53/72
+              54/84
             </aside>
           </footer>
         </div>
@@ -2191,7 +2210,7 @@ coder.b # =&gt; '-...'
             </aside>
             
             <aside class="page_number">
-              54/72
+              55/84
             </aside>
           </footer>
         </div>
@@ -2234,7 +2253,7 @@ coder.b # =&gt; '-...'
             </aside>
             
             <aside class="page_number">
-              55/72
+              56/84
             </aside>
           </footer>
         </div>
@@ -2276,7 +2295,7 @@ coder.b # =&gt; '-...'
             </aside>
             
             <aside class="page_number">
-              56/72
+              57/84
             </aside>
           </footer>
         </div>
@@ -2314,7 +2333,7 @@ coder.b # =&gt; '-...'
             </aside>
             
             <aside class="page_number">
-              57/72
+              58/84
             </aside>
           </footer>
         </div>
@@ -2352,7 +2371,7 @@ coder.b # =&gt; '-...'
             </aside>
             
             <aside class="page_number">
-              58/72
+              59/84
             </aside>
           </footer>
         </div>
@@ -2392,7 +2411,7 @@ coder.b # =&gt; '-...'
             </aside>
             
             <aside class="page_number">
-              59/72
+              60/84
             </aside>
           </footer>
         </div>
@@ -2400,17 +2419,24 @@ coder.b # =&gt; '-...'
       
       <!-- slide source: ruby.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Programování</h1></header>
+            <header><h1>Parametry při spuštění</h1></header>
             
             
-            <section><p>Přidejte kontrolu do konstruktoru MorseCode tak, aby byla vyhozena výjimka
-ArgumentError pokud transmitter neimplementuje metodu puts. Přečtěte soubor
-morse_input.txt a jeho obsah zakódujte pomocí MorseCode a DebugTransmitteru.
-Poté napiště skript, který jako transmitter použije soubor morse_output.txt
-jako transmitter. Pozor, soubor musí být otevřený pro zápis.</p></section>
+            <section><ul>
+<li>Vestavěná konstanta ARGV</li>
+</ul>
+<p><br></p>
+<div class="highlight"><pre><span class="no">ARGV</span><span class="o">.</span><span class="n">size</span> <span class="c1"># v jiných jazycích ARGC</span>
+<span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>   <span class="c1"># v jiných jazycích</span>
+          <span class="c1"># název skriptu</span>
+
+<span class="c1"># název skriptu</span>
+<span class="vg">$0</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">,</span> <span class="vg">$PROGRAM_NAME</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -2426,7 +2452,35 @@ jako transmitter. Pozor, soubor musí být otevřený pro zápis.</p></section>
             </aside>
             
             <aside class="page_number">
-              60/72
+              61/84
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Šestá úloha - E06 soubory a výjimky</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              62/84
             </aside>
           </footer>
         </div>
@@ -2466,7 +2520,7 @@ jako transmitter. Pozor, soubor musí být otevřený pro zápis.</p></section>
             </aside>
             
             <aside class="page_number">
-              61/72
+              63/84
             </aside>
           </footer>
         </div>
@@ -2510,7 +2564,7 @@ jako transmitter. Pozor, soubor musí být otevřený pro zápis.</p></section>
             </aside>
             
             <aside class="page_number">
-              62/72
+              64/84
             </aside>
           </footer>
         </div>
@@ -2521,12 +2575,12 @@ jako transmitter. Pozor, soubor musí být otevřený pro zápis.</p></section>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Socket</h1></header>
+            <header><h1>Sockety</h1></header>
             
             
             <section><p>příklad serveru</p>
 <div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;socket&#39;</span>
-<span class="n">server</span> <span class="o">=</span> <span class="no">TCPServer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span>
+<span class="n">server</span> <span class="o">=</span> <span class="no">TCPServer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;10.0.1.2&quot;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">accept</span>
 <span class="n">client</span><span class="o">.</span><span class="n">puts</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
 <span class="n">client</span><span class="o">.</span><span class="n">close</span>
@@ -2550,7 +2604,7 @@ jako transmitter. Pozor, soubor musí být otevřený pro zápis.</p></section>
             </aside>
             
             <aside class="page_number">
-              63/72
+              65/84
             </aside>
           </footer>
         </div>
@@ -2561,13 +2615,8 @@ jako transmitter. Pozor, soubor musí být otevřený pro zápis.</p></section>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Thread</h1></header>
+            <header><h1>Sedmá úloha - E07 Implementace transmitteru s TCP socketem</h1></header>
             
-            
-            <section><p>Thread.new - hlavni program neceka
-musi se na nem zavolat join
-pole threadu
-Thread.current</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2583,7 +2632,7 @@ Thread.current</p></section>
             </aside>
             
             <aside class="page_number">
-              64/72
+              66/84
             </aside>
           </footer>
         </div>
@@ -2594,8 +2643,17 @@ Thread.current</p></section>
         <div class="slide">
           <div class="inner">
             
+            <header><h1>Thready</h1></header>
             
-            <section><p>threads - priklad se socketama - desifrujici server, port scanner - timeout</p></section>
+            
+            <section><ul>
+<li>implementace využívající vlákna OS</li>
+<li>proces může běžet na více jádrech</li>
+<li>vždy jedno hlavní vlákno, které může spouštět další</li>
+<li>konec hlavního zabije další vlákna</li>
+<li>lze čekat na dokončení pomocí join</li>
+<li>ruby kód nikdy neběží paralelně</li>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -2611,7 +2669,7 @@ Thread.current</p></section>
             </aside>
             
             <aside class="page_number">
-              65/72
+              67/84
             </aside>
           </footer>
         </div>
@@ -2619,12 +2677,26 @@ Thread.current</p></section>
       
       <!-- slide source: ruby.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
+            <header><h1>Thready - příklady</h1></header>
             
-            <section><p>http
-https</p></section>
+            
+            <section><div class="highlight"><pre><span class="mi">5</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+  <span class="no">Thread</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="nb">puts</span> <span class="n">i</span> <span class="p">}</span>
+<span class="k">end</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="p">}</span>
+<span class="n">t</span><span class="o">.</span><span class="n">join</span>
+<span class="n">t</span><span class="o">.</span><span class="n">alive?</span>
+<span class="n">t</span><span class="o">.</span><span class="n">status</span>
+
+<span class="no">Thread</span><span class="o">.</span><span class="n">current</span>
+<span class="no">Thread</span><span class="o">.</span><span class="n">main</span>
+<span class="no">Thread</span><span class="o">.</span><span class="n">abort_on_exception</span> <span class="o">=</span> <span class="kp">true</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -2640,7 +2712,7 @@ https</p></section>
             </aside>
             
             <aside class="page_number">
-              66/72
+              68/84
             </aside>
           </footer>
         </div>
@@ -2648,11 +2720,22 @@ https</p></section>
       
       <!-- slide source: ruby.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
+            <header><h1>Thready - další metody a ukázky</h1></header>
             
-            <section><p>programovani webscrapper</p></section>
+            
+            <section><div class="highlight"><pre><span class="no">Thread</span><span class="o">.</span><span class="n">list</span>
+<span class="no">Thread</span><span class="o">.</span><span class="n">stop</span>
+<span class="no">Thread</span><span class="o">.</span><span class="n">run</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="p">}</span>
+<span class="n">t</span><span class="o">.</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">t</span><span class="o">.</span><span class="n">join</span>
+<span class="n">t</span><span class="o">.</span><span class="n">kill</span> <span class="n">t</span><span class="o">.</span><span class="n">terminate</span> <span class="n">t</span><span class="o">.</span><span class="n">exit</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -2668,7 +2751,7 @@ https</p></section>
             </aside>
             
             <aside class="page_number">
-              67/72
+              69/84
             </aside>
           </footer>
         </div>
@@ -2676,14 +2759,27 @@ https</p></section>
       
       <!-- slide source: ruby.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
+            <header><h1>Thready - thread safe Queue</h1></header>
             
-            <section><p>v záloze
-regularni vyrazy?
-logger?
-struct a openstruct?</p></section>
+            
+            <section><div class="highlight"><pre><span class="n">queue</span> <span class="o">=</span> <span class="no">Queue</span><span class="o">.</span><span class="n">new</span>
+<span class="mi">40</span><span class="o">.</span><span class="n">times</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">queue</span><span class="o">.</span><span class="n">push</span> <span class="n">i</span> <span class="p">}</span>
+<span class="n">workers</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">worker_id</span><span class="o">|</span>
+  <span class="no">Thread</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">worker_id</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="nb">id</span><span class="o">|</span>
+    <span class="k">begin</span>
+      <span class="k">while</span> <span class="p">(</span><span class="n">job</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="kp">true</span><span class="p">))</span> <span class="c1"># non-blocking</span>
+        <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">job</span><span class="si">}</span><span class="s2"> take by worker </span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="k">end</span>
+    <span class="k">rescue</span> <span class="no">ThreadError</span>              <span class="c1"># pop on empty queue</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="n">workers</span><span class="o">.</span><span class="n">each</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:join</span><span class="p">)</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -2699,7 +2795,85 @@ struct a openstruct?</p></section>
             </aside>
             
             <aside class="page_number">
-              68/72
+              70/84
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Osmá úloha</h1></header>
+            
+            
+            <section><ul>
+<li>MorseServer na více portech</li>
+<li>Port scanner</li>
+<li>Bike race</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              71/84
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>HTTP client</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
+<span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;google.com&#39;</span><span class="p">,</span> <span class="s1">&#39;/index.html&#39;</span><span class="p">)</span>
+
+<span class="nb">require</span> <span class="s2">&quot;uri&quot;</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;http://google.com/&quot;</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">uri</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+<span class="n">req</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">::</span><span class="no">Get</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">request_uri</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">code</span>       <span class="c1"># =&gt; 301</span>
+<span class="n">response</span><span class="o">.</span><span class="n">body</span>       <span class="c1"># =&gt; tělo dokumentu</span>
+<span class="n">response</span><span class="o">[</span><span class="s2">&quot;expires&quot;</span><span class="o">]</span> <span class="c1"># =&gt; -1</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              72/84
             </aside>
           </footer>
         </div>
@@ -2714,8 +2888,11 @@ struct a openstruct?</p></section>
             
             
             <section><ul>
-<li>balíčkovací systém</li>
-<li>http://rubygems.org</li>
+<li>existuje obrovské množství knihoven</li>
+<li>vlastní balíčkovací systém</li>
+<li>verze, závislosti, nativní rozšíření</li>
+<li><a href="http://rubygems.org">http://rubygems.org</a></li>
+<li><a href="https://www.ruby-toolbox.com/">https://www.ruby-toolbox.com/</a></li>
 </ul>
 <p><br /></p>
 <div class="highlight"><pre>gem install bundler
@@ -2738,7 +2915,110 @@ gem search rubocop
             </aside>
             
             <aside class="page_number">
-              69/72
+              73/84
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Bundler</h1></header>
+            
+            
+            <section><ul>
+<li>seznam závislostí v Gemfile</li>
+<li>omezení verzí</li>
+<li>bundle install</li>
+<li>Gemfile.lock</li>
+<li>bundle exec</li>
+</ul>
+<p>inicializace v souboru</p>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              74/84
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Bežné datové formáty</h1></header>
+            
+            
+            <section><ul>
+<li>YAML - load to_yaml</li>
+<li>JSON - parse to_json</li>
+<li>XML - např. gem nokogiri</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              75/84
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Devátá úloha - REST API a gemy</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              76/84
             </aside>
           </footer>
         </div>
@@ -2752,6 +3032,13 @@ gem search rubocop
             <header><h1>Testy</h1></header>
             
             
+            <section><ul>
+<li>proč je dobré psát automatizované testy</li>
+<li>rozdíl mezi testy</li>
+<li>v Ruby světe dvě syntaxe, jedna implementace</li>
+<li>testy jsou ruby skripty testující jiné ruby skripty</li>
+</ul></section>
+            
           </div>
           <div class="presenter_notes">
             <header><h1>Presenter Notes</h1></header>
@@ -2766,7 +3053,49 @@ gem search rubocop
             </aside>
             
             <aside class="page_number">
-              70/72
+              77/84
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Testy</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="nb">require</span> <span class="s2">&quot;minitest/autorun&quot;</span>
+
+<span class="k">class</span> <span class="nc">TestMorseCoder</span> <span class="o">&lt;</span> <span class="ss">Minitest</span><span class="p">:</span><span class="ss">:Test</span>
+  <span class="k">def</span> <span class="nf">setup</span>
+    <span class="vi">@coder</span> <span class="o">=</span> <span class="no">MorseCoder</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">test_encode_for_single_letters</span>
+    <span class="n">assert_equal</span> <span class="s2">&quot;.-&quot;</span><span class="p">,</span> <span class="vi">@coder</span><span class="o">.</span><span class="n">encode</span> <span class="s2">&quot;a&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              78/84
             </aside>
           </footer>
         </div>
@@ -2777,12 +3106,15 @@ gem search rubocop
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Tipy a triiky</h1></header>
+            <header><h1>Testy a stubování, mockování</h1></header>
             
             
-            <section><p>memoize i blokove
-rescue cele metody
-pry</p></section>
+            <section><ul>
+<li>testujeme pouze jednu část</li>
+<li>netestované části se side-effecty stubujeme</li>
+<li>mocky se používají jako testovací objekty</li>
+<li>nejlepší je dobře navrhnout objekty</li>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -2798,7 +3130,155 @@ pry</p></section>
             </aside>
             
             <aside class="page_number">
-              71/72
+              79/84
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Testy a stubování, mockování</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="no">Kernel</span><span class="o">.</span><span class="n">stubs</span> <span class="ss">:puts</span><span class="p">,</span> <span class="kp">nil</span> <span class="k">do</span>
+  <span class="n">c</span> <span class="o">=</span> <span class="no">MorseCoder</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">DebugTransmitter</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+  <span class="n">assert_nil</span> <span class="n">c</span><span class="o">.</span><span class="n">transmit</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">mock</span> <span class="o">=</span> <span class="ss">Minitest</span><span class="p">:</span><span class="ss">:Mock</span><span class="o">.</span><span class="n">new</span>
+<span class="n">mock</span><span class="o">.</span><span class="n">expect</span> <span class="ss">:puts</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span>
+<span class="no">MorseCoder</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">mock</span><span class="p">)</span><span class="o">.</span><span class="n">transmit</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="n">mock</span><span class="o">.</span><span class="n">verify</span>
+
+<span class="nb">require</span> <span class="s1">&#39;ostruct&#39;</span>
+<span class="n">os</span> <span class="o">=</span> <span class="no">OpenStruct</span><span class="o">.</span><span class="n">new</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Favorit&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">name</span>             <span class="c1"># =&gt; &#39;Favorit&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">wheel_size</span> <span class="o">=</span> <span class="mi">26</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              80/84
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Desátá úloha - E10 Psaní testů</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              81/84
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+            <section><p>v záloze
+struct 
+regularni vyrazy? - nekam na zacatek pridat
+logger? mozna do testu
+encoding</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              82/84
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Tipy a triky a co se jinam nevešlo</h1></header>
+            
+            
+            <section><ul>
+<li>Memoize patter (víceřádkové)</li>
+<li>rescue celé metody</li>
+<li>gem pry</li>
+<li><a href="http://www.tiobe.com/tiobe_index">Popularita Ruby</a></li>
+<li>další implementace<ul>
+<li>MRI</li>
+<li>JRuby</li>
+<li>Rubynius</li>
+<li>IronRuby, MagLev</li>
+<li>Ruboto</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby.md">ruby.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              83/84
             </aside>
           </footer>
         </div>
@@ -2812,6 +3292,11 @@ pry</p></section>
             <header><h1>Programování</h1></header>
             
             
+            <section><p>File system based databáze
+Todo.txt klient
+Facebook reminder
+Cokoliv vlastního</p></section>
+            
           </div>
           <div class="presenter_notes">
             <header><h1>Presenter Notes</h1></header>
@@ -2826,7 +3311,7 @@ pry</p></section>
             </aside>
             
             <aside class="page_number">
-              72/72
+              84/84
             </aside>
           </footer>
         </div>
@@ -2841,37 +3326,37 @@ pry</p></section>
       <caption>Table of Contents</caption>
       
       <tr id="toc-row-1">
-        <th><a href="#slide1">Programovací jazyk Ruby (PRUBY)</a></th>
+        <th><a href="#slide1">Kurz Programovací jazyk Ruby (PRUBY)</a></th>
         <td><a href="#slide1">1</a></td>
       </tr>
       
       
       <tr id="toc-row-2">
-        <th><a href="#slide2">Základní vlastnosti jazyka</a></th>
+        <th><a href="#slide2">Struktura kurzu</a></th>
         <td><a href="#slide2">2</a></td>
       </tr>
       
       
       <tr id="toc-row-3">
-        <th><a href="#slide3">Instalace</a></th>
+        <th><a href="#slide3">Základní vlastnosti jazyka</a></th>
         <td><a href="#slide3">3</a></td>
       </tr>
       
       
       <tr id="toc-row-4">
-        <th><a href="#slide4">Jak spouštět ruby</a></th>
+        <th><a href="#slide4">Instalace</a></th>
         <td><a href="#slide4">4</a></td>
       </tr>
       
       
       <tr id="toc-row-5">
-        <th><a href="#slide5">Co dál budeme potřebovat</a></th>
+        <th><a href="#slide5">Jak spouštět ruby</a></th>
         <td><a href="#slide5">5</a></td>
       </tr>
       
       
       <tr id="toc-row-6">
-        <th><a href="#slide6">Základy syntaxe</a></th>
+        <th><a href="#slide6">Co budeme potřebovat</a></th>
         <td><a href="#slide6">6</a></td>
       </tr>
       
@@ -2895,97 +3380,97 @@ pry</p></section>
       
       
       <tr id="toc-row-10">
-        <th><a href="#slide10">Datové typy - ukázky</a></th>
+        <th><a href="#slide10">Základy syntaxe</a></th>
         <td><a href="#slide10">10</a></td>
       </tr>
       
       
       <tr id="toc-row-11">
-        <th><a href="#slide11">Objekty a metody</a></th>
+        <th><a href="#slide11">Datové typy - ukázky</a></th>
         <td><a href="#slide11">11</a></td>
       </tr>
       
       
       <tr id="toc-row-12">
-        <th><a href="#slide12">Proměnné</a></th>
+        <th><a href="#slide12">Objekty a metody</a></th>
         <td><a href="#slide12">12</a></td>
       </tr>
       
       
       <tr id="toc-row-13">
-        <th><a href="#slide13">Řízení běhu programu - if</a></th>
+        <th><a href="#slide13">Proměnné</a></th>
         <td><a href="#slide13">13</a></td>
       </tr>
       
       
       <tr id="toc-row-14">
-        <th><a href="#slide14">Řízení běhu programu</a></th>
+        <th><a href="#slide14">Řízení běhu programu - if</a></th>
         <td><a href="#slide14">14</a></td>
       </tr>
       
       
       <tr id="toc-row-15">
-        <th><a href="#slide15">Logické operátory</a></th>
+        <th><a href="#slide15">Řízení běhu programu</a></th>
         <td><a href="#slide15">15</a></td>
       </tr>
       
       
       <tr id="toc-row-16">
-        <th><a href="#slide16">Ternární operátor</a></th>
+        <th><a href="#slide16">Logické operátory</a></th>
         <td><a href="#slide16">16</a></td>
       </tr>
       
       
       <tr id="toc-row-17">
-        <th><a href="#slide17">Řízení běhu programu - case</a></th>
+        <th><a href="#slide17">Ternární operátor</a></th>
         <td><a href="#slide17">17</a></td>
       </tr>
       
       
       <tr id="toc-row-18">
-        <th><a href="#slide18">Řízení běhu programu - while</a></th>
+        <th><a href="#slide18">Řízení běhu programu - case</a></th>
         <td><a href="#slide18">18</a></td>
       </tr>
       
       
       <tr id="toc-row-19">
-        <th><a href="#slide19">Metody</a></th>
+        <th><a href="#slide19">Řízení běhu programu - while</a></th>
         <td><a href="#slide19">19</a></td>
       </tr>
       
       
       <tr id="toc-row-20">
-        <th><a href="#slide20">Metody - argumenty</a></th>
+        <th><a href="#slide20">Metody</a></th>
         <td><a href="#slide20">20</a></td>
       </tr>
       
       
       <tr id="toc-row-21">
-        <th><a href="#slide21">Metody - návratová hodnota</a></th>
+        <th><a href="#slide21">Metody - argumenty</a></th>
         <td><a href="#slide21">21</a></td>
       </tr>
       
       
       <tr id="toc-row-22">
-        <th><a href="#slide22">Konvence - soubory, jmena, nazvy metod</a></th>
+        <th><a href="#slide22">Metody - návratová hodnota</a></th>
         <td><a href="#slide22">22</a></td>
       </tr>
       
       
       <tr id="toc-row-23">
-        <th><a href="#slide23">První úloha - implementace metod</a></th>
+        <th><a href="#slide23">Konvence - soubory, jména, názvy metod</a></th>
         <td><a href="#slide23">23</a></td>
       </tr>
       
       
       <tr id="toc-row-24">
-        <th><a href="#slide24">Skripty složené z  více souborů</a></th>
+        <th><a href="#slide24">První úloha - E01 implementace metod</a></th>
         <td><a href="#slide24">24</a></td>
       </tr>
       
       
       <tr id="toc-row-25">
-        <th><a href="#slide25">Bloky</a></th>
+        <th><a href="#slide25">Skripty složené z více souborů</a></th>
         <td><a href="#slide25">25</a></td>
       </tr>
       
@@ -2997,37 +3482,37 @@ pry</p></section>
       
       
       <tr id="toc-row-27">
-        <th><a href="#slide27">Iterátory</a></th>
+        <th><a href="#slide27">Bloky</a></th>
         <td><a href="#slide27">27</a></td>
       </tr>
       
       
       <tr id="toc-row-28">
-        <th><a href="#slide28">Užitečné vestavěné iterátory</a></th>
+        <th><a href="#slide28">Iterátory</a></th>
         <td><a href="#slide28">28</a></td>
       </tr>
       
       
       <tr id="toc-row-29">
-        <th><a href="#slide29">Blok jako objekt</a></th>
+        <th><a href="#slide29">Užitečné vestavěné iterátory</a></th>
         <td><a href="#slide29">29</a></td>
       </tr>
       
       
       <tr id="toc-row-30">
-        <th><a href="#slide30">-</a></th>
+        <th><a href="#slide30">Blok jako objekt</a></th>
         <td><a href="#slide30">30</a></td>
       </tr>
       
       
       <tr id="toc-row-31">
-        <th><a href="#slide31">Ruby a objekty</a></th>
+        <th><a href="#slide31">Druhá úloha - E02 iterátory</a></th>
         <td><a href="#slide31">31</a></td>
       </tr>
       
       
       <tr id="toc-row-32">
-        <th><a href="#slide32">Instanční proměnné / atributy</a></th>
+        <th><a href="#slide32">Ruby a objekty</a></th>
         <td><a href="#slide32">32</a></td>
       </tr>
       
@@ -3039,73 +3524,73 @@ pry</p></section>
       
       
       <tr id="toc-row-34">
-        <th><a href="#slide34">Konstruktor, destruktor, GC</a></th>
+        <th><a href="#slide34">Instanční proměnné / atributy</a></th>
         <td><a href="#slide34">34</a></td>
       </tr>
       
       
       <tr id="toc-row-35">
-        <th><a href="#slide35">Dědičnost</a></th>
+        <th><a href="#slide35">Konstruktor, destruktor, GC</a></th>
         <td><a href="#slide35">35</a></td>
       </tr>
       
       
       <tr id="toc-row-36">
-        <th><a href="#slide36">Třídní metody a atributy</a></th>
+        <th><a href="#slide36">Dědičnost</a></th>
         <td><a href="#slide36">36</a></td>
       </tr>
       
       
       <tr id="toc-row-37">
-        <th><a href="#slide37">-</a></th>
+        <th><a href="#slide37">Třídní metody a atributy</a></th>
         <td><a href="#slide37">37</a></td>
       </tr>
       
       
       <tr id="toc-row-38">
-        <th><a href="#slide38">Monkey-patching</a></th>
+        <th><a href="#slide38">Třetí úloha - E03 MorseCoder, Bike</a></th>
         <td><a href="#slide38">38</a></td>
       </tr>
       
       
       <tr id="toc-row-39">
-        <th><a href="#slide39">Vnořené třídy a moduly</a></th>
+        <th><a href="#slide39">Monkey-patching</a></th>
         <td><a href="#slide39">39</a></td>
       </tr>
       
       
       <tr id="toc-row-40">
-        <th><a href="#slide40">Module include a extend, mixin</a></th>
+        <th><a href="#slide40">Vnořené třídy a moduly</a></th>
         <td><a href="#slide40">40</a></td>
       </tr>
       
       
       <tr id="toc-row-41">
-        <th><a href="#slide41">Module include a konflikty</a></th>
+        <th><a href="#slide41">Module include a extend, mixin</a></th>
         <td><a href="#slide41">41</a></td>
       </tr>
       
       
       <tr id="toc-row-42">
-        <th><a href="#slide42">-</a></th>
+        <th><a href="#slide42">Module include a konflikty</a></th>
         <td><a href="#slide42">42</a></td>
       </tr>
       
       
       <tr id="toc-row-43">
-        <th><a href="#slide43">Řízení přistupu</a></th>
+        <th><a href="#slide43">Čtvrtá úloha - E04 rozšiřování objektů</a></th>
         <td><a href="#slide43">43</a></td>
       </tr>
       
       
       <tr id="toc-row-44">
-        <th><a href="#slide44">Metoda send a public_send</a></th>
+        <th><a href="#slide44">Řízení přístupu</a></th>
         <td><a href="#slide44">44</a></td>
       </tr>
       
       
       <tr id="toc-row-45">
-        <th><a href="#slide45">Duck typing</a></th>
+        <th><a href="#slide45">Metoda send a public_send</a></th>
         <td><a href="#slide45">45</a></td>
       </tr>
       
@@ -3117,31 +3602,31 @@ pry</p></section>
       
       
       <tr id="toc-row-47">
-        <th><a href="#slide47">Další metody introspekce objektu</a></th>
+        <th><a href="#slide47">Duck typing</a></th>
         <td><a href="#slide47">47</a></td>
       </tr>
       
       
       <tr id="toc-row-48">
-        <th><a href="#slide48">Callback method_missing</a></th>
+        <th><a href="#slide48">Další metody introspekce objektu</a></th>
         <td><a href="#slide48">48</a></td>
       </tr>
       
       
       <tr id="toc-row-49">
-        <th><a href="#slide49">-</a></th>
+        <th><a href="#slide49">Callback method_missing</a></th>
         <td><a href="#slide49">49</a></td>
       </tr>
       
       
       <tr id="toc-row-50">
-        <th><a href="#slide50">Metaprogramování</a></th>
+        <th><a href="#slide50">Pátá úloha - E05 transmittery, metaprogramování</a></th>
         <td><a href="#slide50">50</a></td>
       </tr>
       
       
       <tr id="toc-row-51">
-        <th><a href="#slide51">Výjimky</a></th>
+        <th><a href="#slide51">Metaprogramování</a></th>
         <td><a href="#slide51">51</a></td>
       </tr>
       
@@ -3165,110 +3650,182 @@ pry</p></section>
       
       
       <tr id="toc-row-55">
-        <th><a href="#slide55">Výjimky vs. řízení toku programu</a></th>
+        <th><a href="#slide55">Výjimky</a></th>
         <td><a href="#slide55">55</a></td>
       </tr>
       
       
       <tr id="toc-row-56">
-        <th><a href="#slide56">Soubory</a></th>
+        <th><a href="#slide56">Výjimky vs. řízení toku programu</a></th>
         <td><a href="#slide56">56</a></td>
       </tr>
       
       
       <tr id="toc-row-57">
-        <th><a href="#slide57">Soubory - módy otevření</a></th>
+        <th><a href="#slide57">Soubory</a></th>
         <td><a href="#slide57">57</a></td>
       </tr>
       
       
       <tr id="toc-row-58">
-        <th><a href="#slide58">Soubory - čtení a zápis</a></th>
+        <th><a href="#slide58">Soubory - módy otevření</a></th>
         <td><a href="#slide58">58</a></td>
       </tr>
       
       
       <tr id="toc-row-59">
-        <th><a href="#slide59">Soubory - granulárnější přístup</a></th>
+        <th><a href="#slide59">Soubory - čtení a zápis</a></th>
         <td><a href="#slide59">59</a></td>
       </tr>
       
       
       <tr id="toc-row-60">
-        <th><a href="#slide60">Programování</a></th>
+        <th><a href="#slide60">Soubory - granulárnější přístup</a></th>
         <td><a href="#slide60">60</a></td>
       </tr>
       
       
       <tr id="toc-row-61">
-        <th><a href="#slide61">Timeout</a></th>
+        <th><a href="#slide61">Parametry při spuštění</a></th>
         <td><a href="#slide61">61</a></td>
       </tr>
       
       
       <tr id="toc-row-62">
-        <th><a href="#slide62">Sockety</a></th>
+        <th><a href="#slide62">Šestá úloha - E06 soubory a výjimky</a></th>
         <td><a href="#slide62">62</a></td>
       </tr>
       
       
       <tr id="toc-row-63">
-        <th><a href="#slide63">Socket</a></th>
+        <th><a href="#slide63">Timeout</a></th>
         <td><a href="#slide63">63</a></td>
       </tr>
       
       
       <tr id="toc-row-64">
-        <th><a href="#slide64">Thread</a></th>
+        <th><a href="#slide64">Sockety</a></th>
         <td><a href="#slide64">64</a></td>
       </tr>
       
       
       <tr id="toc-row-65">
-        <th><a href="#slide65">-</a></th>
+        <th><a href="#slide65">Sockety</a></th>
         <td><a href="#slide65">65</a></td>
       </tr>
       
       
       <tr id="toc-row-66">
-        <th><a href="#slide66">-</a></th>
+        <th><a href="#slide66">Sedmá úloha - E07 Implementace transmitteru s TCP socketem</a></th>
         <td><a href="#slide66">66</a></td>
       </tr>
       
       
       <tr id="toc-row-67">
-        <th><a href="#slide67">-</a></th>
+        <th><a href="#slide67">Thready</a></th>
         <td><a href="#slide67">67</a></td>
       </tr>
       
       
       <tr id="toc-row-68">
-        <th><a href="#slide68">-</a></th>
+        <th><a href="#slide68">Thready - příklady</a></th>
         <td><a href="#slide68">68</a></td>
       </tr>
       
       
       <tr id="toc-row-69">
-        <th><a href="#slide69">Rubygems</a></th>
+        <th><a href="#slide69">Thready - další metody a ukázky</a></th>
         <td><a href="#slide69">69</a></td>
       </tr>
       
       
       <tr id="toc-row-70">
-        <th><a href="#slide70">Testy</a></th>
+        <th><a href="#slide70">Thready - thread safe Queue</a></th>
         <td><a href="#slide70">70</a></td>
       </tr>
       
       
       <tr id="toc-row-71">
-        <th><a href="#slide71">Tipy a triiky</a></th>
+        <th><a href="#slide71">Osmá úloha</a></th>
         <td><a href="#slide71">71</a></td>
       </tr>
       
       
       <tr id="toc-row-72">
-        <th><a href="#slide72">Programování</a></th>
+        <th><a href="#slide72">HTTP client</a></th>
         <td><a href="#slide72">72</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-73">
+        <th><a href="#slide73">Rubygems</a></th>
+        <td><a href="#slide73">73</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-74">
+        <th><a href="#slide74">Bundler</a></th>
+        <td><a href="#slide74">74</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-75">
+        <th><a href="#slide75">Bežné datové formáty</a></th>
+        <td><a href="#slide75">75</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-76">
+        <th><a href="#slide76">Devátá úloha - REST API a gemy</a></th>
+        <td><a href="#slide76">76</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-77">
+        <th><a href="#slide77">Testy</a></th>
+        <td><a href="#slide77">77</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-78">
+        <th><a href="#slide78">Testy</a></th>
+        <td><a href="#slide78">78</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-79">
+        <th><a href="#slide79">Testy a stubování, mockování</a></th>
+        <td><a href="#slide79">79</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-80">
+        <th><a href="#slide80">Testy a stubování, mockování</a></th>
+        <td><a href="#slide80">80</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-81">
+        <th><a href="#slide81">Desátá úloha - E10 Psaní testů</a></th>
+        <td><a href="#slide81">81</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-82">
+        <th><a href="#slide82">-</a></th>
+        <td><a href="#slide82">82</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-83">
+        <th><a href="#slide83">Tipy a triky a co se jinam nevešlo</a></th>
+        <td><a href="#slide83">83</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-84">
+        <th><a href="#slide84">Programování</a></th>
+        <td><a href="#slide84">84</a></td>
       </tr>
       
       
