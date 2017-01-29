@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Foreman templating engine - best practises and future</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+    body {
+      font-family: 'Droid Serif';
+    }
+    h1, h2, h3 {
+      font-family: 'Yanone Kaffeesatz';
+      font-weight: normal;
+    }
+    .remark-code {
+      font-family: 'Ubuntu Mono';
+      font-size: 25px;
+    }
+
+    .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+        font-size: 28px;
+      }
+
+    .remark-slide-content {
+      font-size: 28px;
+    }
+
+    #slide-indentation-example .remark-code {
+      font-size: 18px;
+    }
+
+    .rendering,
+    .input-validations,
+    .output-validations,
+    .error_messages,
+    .line_number,
+    .extend,
+    .context,
+    .sharing,
+    .metadata {
+      color: #980000;
+    }
+
+    .review1 .sharing {
+      color: #006c19;
+    }
+
+    .review2 .error_messages {
+      color: #006c19;
+    }
+
+    .review2 .extend, .review2 .context {
+      color: #b8a61c;
+    }
+
+    .review3 .metadata, .review3 .input-validations, .review3 .rendering {
+      color: #b8a61c;
+    }
+
+    .footnote-left {
+      position: absolute;
+      bottom: 3em;
+      left: 3em;
+    }
+
+    .footnote-right {
+      position: absolute;
+      bottom: 3em;
+      right: 3em;
+    }
+
+    a, a > code {
+      color: rgb(249, 38, 114);
+      text-decoration: none;
+    }
+
+    .green {
+      color: rgb(0, 255, 0);
+    }
+  </style>
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+# Foreman Templates
+
+## best practises and future
+
+.footnote-left[Marek Hulán <br/> [mhulan@redhat.com](mailto:mhulan@redhat.com)]
+.footnote-right[Cfgmgmt camp 2017 <br> [ares.github.io/templates](https://ares.github.io/templates/)]
+---
+
+# Foreman Templates
+
+* Text document with Embedded Ruby
+
+--
+
+* Evaluates Ruby on demand
+
+--
+
+* Output can be any text format e.g. kickstart, preseed, shell script
+
+--
+
+* Foreman uses Provisioning, Partition tables and Job templates
+
+---
+
+# Embedded Ruby
+
+* inject Ruby code using `<%  %>`
+
+--
+
+* output the result of expression by `<%= %>`
+
+--
+
+* comment tags `<%# %>`
+
+--
+
+* trim whitespace by dash `<%- -%>`
+
+--
+
+example from kickstart provisioning template:
+```erb
+<% if @host.param_true?('disable-firewall') -%>
+firewall --disable
+<% else -%>
+firewall --<%= @host.operatingsystem.major.to_i >= 6 ? 'service=' : '' %>ssh
+<% end -%>
+```
+---
+
+# Keep templates readable
+
+* extract code to variables
+
+--
+
+* avoid using internal objects
+
+--
+
+* if there's a macro (`host_os_major` in this case), use it
+
+--
+
+* ask for new macros, build your own
+
+--
+
+* see available macros at [Template Writing wiki page](http://projects.theforeman.org/projects/foreman/wiki/templatewriting)
+
+--
+
+* later should be moved to [developer handbook](https://theforeman.org/handbook.html)
+
+---
+
+# Keep templates readable
+
+* ~~recently added (hopefully) marcos~~
+```ruby
+save_to_file('/tmp/a', 'data')
+host_os_rhel_compatible # rhel, centos but not fedora
+host_os_family          # @host.operatingsystem.family
+host_os_name            # @host.operatingsystem.name
+host_os_major           # @host.operatingsystem.major.to_i
+host_os_minor           # @host.operatingsystem.minor.to_i
+puppet_enabled          # !@host.puppetmaster.empty?
+# TODO
+host_os_rpm_based
+host_os_deb_based
+```
+
+---
+
+# Adding your own macro
+
+1. edit lib/foreman/renderer.rb
+
+--
+
+2. allow in safe mode
+
+--
+
+3. add a test in test/unit/foreman/renderer_test.rb (optional)
+
+--
+
+4. send a patch
+
+---
+name: indentation-example
+
+# Keep templates readable - indentation
+
+```erb
+<% if @host.operatingsystem.name == 'Fedora' -%>
+repo --name=fedora-everything --mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=fedora-<%= @host.operatingsystem.major %>&arch=<%= @host.architecture %><%= proxy_string %>
+<% if puppet_enabled -%>
+<% if @host.param_true?('enable-puppetlabs-repo') -%>
+repo --name=puppetlabs-products --baseurl=http://yum.puppetlabs.com/fedora/f<%= @host.operatingsystem.major %>/products/<%= @host.architecture %><%= proxy_string %>
+repo --name=puppetlabs-deps --baseurl=http://yum.puppetlabs.com/fedora/f<%= @host.operatingsystem.major %>/dependencies/<%= @host.architecture %><%= proxy_string %>
+<% end -%>
+<% if @host.param_true?('enable-puppetlabs-pc1-repo') -%>
+repo --name=puppetlabs-pc1 --baseurl=http://yum.puppetlabs.com/fedora/f<%= @host.operatingsystem.major %>/PC1/<%= @host.architecture %><%= proxy_string %>
+<% end -%>
+<% end -%>
+<% elsif rhel_compatible && os_major > 4 -%>
+<% unless @host.param_false?('enable-epel') -%>
+repo --name="EPEL" --mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-<%= @host.operatingsystem.major %>&arch=<%= @host.architecture %><%= proxy_string %>
+<% end -%>
+<% if puppet_enabled -%>
+<% if @host.param_true?('enable-puppetlabs-repo') -%>
+repo --name=puppetlabs-products --baseurl=http://yum.puppetlabs.com/el/<%= @host.operatingsystem.major %>/products/<%= @host.architecture %><%= proxy_string %>
+repo --name=puppetlabs-deps --baseurl=http://yum.puppetlabs.com/el/<%= @host.operatingsystem.major %>/dependencies/<%= @host.architecture %><%= proxy_string %>
+<% end -%>
+<% if @host.param_true?('enable-puppetlabs-pc1-repo') -%>
+repo --name=puppetlabs-pc1 --baseurl=http://yum.puppetlabs.com/el/<%= @host.operatingsystem.major %>/PC1/<%= @host.architecture %><%= proxy_string %>
+<% end -%>
+<% end -%>
+<% end -%>
+```
+
+---
+
+# Keep templates readable
+
+Let's see an example
+
+--
+
+* watch out for empty lines in output
+
+--
+
+* `indent` macro can help
+
+--
+
+* spaces in erb are not significant
+
+--
+
+* use `<%-` to keep inner alignment with `<%=`
+
+---
+
+# Split the templates into smaller parts
+
+* Reuse instead of repeat
+
+--
+
+* Separate isolated parts into snippets
+
+--
+
+* Use `snippet` or `snippet_if_exists`
+
+--
+
+* Combine snippets with indent
+
+```erb
+iface eth0 inet static
+<%= indent(4) { snippet 'preseed_interface' } %>
+```
+
+```erb
+address <%= @host.ip %>
+gateway <%= @host.subnet.gateway  %>
+netmask <%= @host.subnet.mask  %>
+dns-nameservers <%= @host.subnet.dns_primary %> <%= @host.subnet.dns_secondary %>
+dns-search <%= @host.domain %>
+```
+
+---
+
+# Snippets
+
+Snippets can be parametrized (Foreman 1.15+)
+
+snippet called ahoy:
+```erb
+hello <%= @target %>
+```
+
+usage:
+```erb
+<%# this will render "hello world!" -%>
+<%= snippet 'ahoy', :variables => { :target => 'world!' } %>
+```
+---
+
+# Other ERB specifics
+
+* `case` expression common mistakes
+
+--
+
+* `respond_to?` only works in unsafe mode
+
+--
+
+* Job templates has slightly richer syntax (`preview?`, `render_template`)
+
+--
+
+* Parameters less rich
+
+---
+
+# Debugging
+
+* Turn off the safe mode and see the trace !PR
+
+--
+
+* Turn off the safe mode and use `template_logger.fatal "debug message"`
+
+--
+
+* [pry](https://github.com/pry/pry) can be invoked
+
+--
+
+* [pry-remote](https://github.com/Mon-Ouie/pry-remote) works for production setup but be careful
+
+--
+
+* If unsure, try previewing with deleting of template parts
+
+--
+
+* If you have 100+ hosts, previewing might not work [until this is merged](https://github.com/theforeman/foreman/pull/4213)
+
+---
+name:other-challenges
+
+# Other challenges
+
+* .rendering[can't reliably preview prior rendering]
+* .input-validations[no inputs specification]
+* .output-validations[output validators]
+* .error_messages[weird error messages, e.g. undefined method id on nil]
+* .line_number[no line number information (except for unsafe mode)]
+* .extend[can't extend from plugins]
+* .context[context impact - Organizations and Locations, Authorization]
+* .sharing[templates sharing and updating]
+* .sharing[vcs with external tools e.g. darcs, mercurial]
+* .metadata[metadata makes template unreadable]
+
+--
+
+Solutions? Let's see...
+
+---
+
+# foreman_templates plugin
+
+* defines two rake tasks for synchronizing templates
+
+--
+
+* can use local directory or git repository directly
+
+--
+
+* can be fully automated with cron or git hooks
+
+--
+
+* compatible with new community-templates repo structure
+
+--
+
+* default configuration via Settings
+
+--
+
+```ruby
+foreman-rake templates:import verbose=yes
+foreman-rake templates:export repo=/tmp/templates
+```
+
+!DEMO
+
+---
+
+name: review1
+template: other-challenges
+class: review1
+
+---
+
+# Extending from plugins
+
+* Plugins need to extend specific places
+
+--
+
+* [RFC](https://github.com/theforeman/rfcs/pull/6) for this feature exists
+
+--
+
+* E.g. chef-client bootstrap in kickstart %post
+
+```erb
+%post
+<%= include_extensions :provisioned_before_restart %>
+```
+
+in plugin
+```rb
+Foreman::Plugin.register :foreman_chef do
+  register_template_extensions :provisioned_before_restart do
+    snippet 'chef client bootstrap'
+  end
+end
+```
+
+---
+
+# Avoiding internal ruby errors
+
+* Avoid using internal objects
+
+--
+
+* Use macros, they render better error messages
+
+--
+
+* In future, proxy objects could also help
+
+```erb
+<%= @host.os_major %>
+```
+
+instead of
+
+```erb
+<%= @host.operatingsystem.major.to_i %>
+```
+
+---
+
+name: review2
+template: review1
+class: review2
+
+---
+
+# Template inputs
+
+* Let's look at Job templates inputs
+
+--
+
+* Add validations to inputs
+
+--
+
+* Let user simulate specific input values on preview
+
+--
+
+* Previewing even without values
+
+--
+
+* We could warn at snippet call
+
+--
+
+* Avoid repeating parameters in nested snippets
+
+---
+
+# Metadata refactor
+
+* Useful when sharing
+
+--
+
+* Holds OS info, name, inputs
+
+--
+
+* Separate it from the template code on import
+
+--
+
+* Can be automatically generated or kept on export
+
+---
+
+name: review3
+template: review2
+class: review3
+
+---
+
+# Few less known facts
+
+* Templates are overriden during each db:seed if there's no audit
+
+--
+
+* Permissions for locking/unlocking
+
+--
+
+* Help tab lists available safe mode macros
+
+--
+
+* !Editor shortcuts and modes
+
+---
+
+# Thank you - questions?
+
+
+* [This presentation](https://ares.github.io/templates/templates/index.html)]
+* [Template Writing wiki page](http://projects.theforeman.org/projects/foreman/wiki/templatewriting)
+* [Refactoring PR](https://github.com/theforeman/community-templates/pull/348)
+* [foreman_templates plugin](https://github.com/theforeman/foreman_templates)
+
+---
+
+    </textarea>
+    <!--
+    # Introduction
+
+    * view-source:https://remarkjs.com/#1
+    * https://remarkjs.com/#1
+    * https://github.com/gnab/remark
+    * https://github.com/roberto/ruby-sinform-2012/blob/master/index.html
+    * http://robertosoares.me/ruby-sinform-2012/#91
+     -->
+
+<!-- https://gnab.github.io/remark/downloads/remark-latest.min.js -->
+<script src="../remark-latest.min.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+  var slideshow = remark.create({
+      // Set the slideshow display ratio
+      // Default: '4:3'
+      // Alternatives: '16:9', ...
+      ratio: '4:3',
+
+      // Navigation options
+      navigation: {
+        // Enable or disable navigating using scroll
+        // Default: true
+        // Alternatives: false
+        scroll: true,
+
+        // Enable or disable navigation using touch
+        // Default: true
+        // Alternatives: false
+        touch: true,
+
+        // Enable or disable navigation using click
+        // Default: false
+        // Alternatives: true
+        click: false
+      },
+
+      // Customize slide number label, either using a format string..
+      slideNumberFormat: 'Slide %current% of %total%',
+      // .. or by using a format function
+      slideNumberFormat: function (current, total) {
+        // return 'Slide ' + current + ' of ' + total;
+        return '';
+      },
+
+      // Enable or disable counting of incremental slides in the slide counting
+      countIncrementalSlides: false,
+
+      // Highlight lines in code examples prefixed with * by yellow background
+      highlightLines: false,
+
+      // Alternatives: arta, ascetic, dark, default, far, github, googlecode, idea, ir_black, magula, monokai, rainbow,
+      // solarized-dark, solarized-light, sunburst, tomorrow, tomorrow-night-blue, tomorrow-night-bright,
+      // tomorrow-night, tomorrow-night-eighties, vs, zenburn.
+
+      // black variant sunburst, white variant github or maguka
+      highlightStyle: 'sunburst'
+    });
+</script>
+</body>
+</html>
