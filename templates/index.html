@@ -73,6 +73,10 @@
       right: 3em;
     }
 
+    .footnote-right img {
+      height: 100px;
+    }
+
     a, a > code {
       color: rgb(249, 38, 114);
       text-decoration: none;
@@ -92,8 +96,8 @@ class: center, middle
 
 ## best practises and future
 
-.footnote-left[Marek Hulán <br/> [mhulan@redhat.com](mailto:mhulan@redhat.com)]
-.footnote-right[Cfgmgmt camp 2017 <br> [ares.github.io/templates](https://ares.github.io/templates/)]
+.footnote-left[Marek Hulán <br> [mhulan@redhat.com](mailto:mhulan@redhat.com)]
+.footnote-right[![Foreman logo](foreman-web.svg) <br> Cfgmgmt camp 2017] <br>
 ---
 
 # Foreman Templates
@@ -142,47 +146,29 @@ firewall --<%= @host.operatingsystem.major.to_i >= 6 ? 'service=' : '' %>ssh
 ```
 ---
 
-# Keep templates readable
+# Keep templates readable - tips
 
 * extract code to variables
 
 --
 
-* avoid using internal objects
+* if there's a macro - use it
 
 --
 
-* if there's a macro (`host_os_major` in this case), use it
+* if not - ask for it, e.g. `host_os_major`
 
 --
 
-* ask for new macros, build your own
+* build your own macros
 
 --
 
-* see available macros at [Template Writing wiki page](http://projects.theforeman.org/projects/foreman/wiki/templatewriting)
+* see available macros at [Template Writing wiki](http://projects.theforeman.org/projects/foreman/wiki/templatewriting)
 
 --
 
 * later should be moved to [developer handbook](https://theforeman.org/handbook.html)
-
----
-
-# Keep templates readable
-
-* ~~recently added (hopefully) marcos~~
-```ruby
-save_to_file('/tmp/a', 'data')
-host_os_rhel_compatible # rhel, centos but not fedora
-host_os_family          # @host.operatingsystem.family
-host_os_name            # @host.operatingsystem.name
-host_os_major           # @host.operatingsystem.major.to_i
-host_os_minor           # @host.operatingsystem.minor.to_i
-puppet_enabled          # !@host.puppetmaster.empty?
-# TODO
-host_os_rpm_based
-host_os_deb_based
-```
 
 ---
 
@@ -261,7 +247,7 @@ Let's see an example
 
 # Split the templates into smaller parts
 
-* Reuse instead of repeat
+* Reuse instead of repeat (DRY)
 
 --
 
@@ -294,16 +280,18 @@ dns-search <%= @host.domain %>
 
 Snippets can be parametrized (Foreman 1.15+)
 
+usage:
+```erb
+<%# this will render "hello world!" -%>
+<%= snippet 'ahoy',
+      :variables => { :target => 'world!' } %>
+```
+
 snippet called ahoy:
 ```erb
 hello <%= @target %>
 ```
 
-usage:
-```erb
-<%# this will render "hello world!" -%>
-<%= snippet 'ahoy', :variables => { :target => 'world!' } %>
-```
 ---
 
 # Other ERB specifics
@@ -421,13 +409,13 @@ class: review1
 
 ```erb
 %post
-<%= include_extensions :provisioned_before_restart %>
+<%= include_extensions :post %>
 ```
 
 in plugin
 ```rb
 Foreman::Plugin.register :foreman_chef do
-  register_template_extensions :provisioned_before_restart do
+  register_template_extensions :post do
     snippet 'chef client bootstrap'
   end
 end
@@ -535,26 +523,14 @@ class: review3
 
 # Thank you - questions?
 
-
-* [This presentation](https://ares.github.io/templates/templates/index.html)]
+* [This presentation](http://ares.github.io/presentations/templates/index.html)
 * [Template Writing wiki page](http://projects.theforeman.org/projects/foreman/wiki/templatewriting)
 * [Refactoring PR](https://github.com/theforeman/community-templates/pull/348)
 * [foreman_templates plugin](https://github.com/theforeman/foreman_templates)
 
----
+.center[![Presentation link](qrcode.svg)]
 
-    </textarea>
-    <!--
-    # Introduction
-
-    * view-source:https://remarkjs.com/#1
-    * https://remarkjs.com/#1
-    * https://github.com/gnab/remark
-    * https://github.com/roberto/ruby-sinform-2012/blob/master/index.html
-    * http://robertosoares.me/ruby-sinform-2012/#91
-     -->
-
-<!-- https://gnab.github.io/remark/downloads/remark-latest.min.js -->
+</textarea>
 <script src="../remark-latest.min.js" type="text/javascript">
 </script>
 <script type="text/javascript">
