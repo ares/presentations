@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Foreman templating engine - best practises and future</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+    body {
+      font-family: 'Droid Serif';
+    }
+    h1, h2, h3 {
+      font-family: 'Yanone Kaffeesatz';
+      font-weight: normal;
+    }
+    .remark-code {
+      font-family: 'Ubuntu Mono';
+      font-size: 25px;
+    }
+
+    .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+        font-size: 28px;
+      }
+
+    .remark-slide-content {
+      font-size: 28px;
+    }
+
+    .footnote-left {
+      position: absolute;
+      bottom: 3em;
+      left: 3em;
+    }
+
+    .footnote-right {
+      position: absolute;
+      bottom: 3em;
+      right: 3em;
+    }
+
+    .footnote-right img {
+      height: 100px;
+    }
+
+    a, a > code {
+      color: rgb(249, 38, 114);
+      text-decoration: none;
+    }
+
+    .green {
+      color: rgb(0, 255, 0);
+    }
+
+    #slide-introduction img {
+      height: 100px;
+      margin-left: 50px;
+    }
+
+    #slide-introduction {
+      font-size: 22px
+    }
+
+    #slide-how_it_works img {
+      height: 500px;
+      margin-left: -50px;
+    }
+
+    #slide-compute_resources .left-column {
+      width: 50%
+    }
+
+    #slide-compute_resources .right-column {
+      width: 40%
+    }
+
+    /* Two-column layout */
+    .left-column {
+      width: 35%;
+      float: left;
+    }
+    .right-column {
+      width: 30%;
+      float: right;
+      padding-top: 0em;
+    }
+    #slide-introduction .left-column p, #slide-introduction .right-column p {
+      padding-right: 20px;
+    }
+  </style>
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+# How to get the most of
+# Foreman and Chef
+
+.footnote-left[Marek Hulán <br> [mhulan@redhat.com](mailto:mhulan@redhat.com)]
+.footnote-right[![Foreman logo](foreman-web.svg) ![Chef logo](chef.svg)<br> Cfgmgmt camp 2017] <br>
+---
+name:introduction
+
+# What is Foreman?
+
+.left-column[
+![provisioning](provisioning.png)
+
+## Provisioning
+
+Provision on bare-metal & public or private clouds all from one place with one simple process.
+]
+
+.left-column[
+![configuration](configuration.png)
+
+## Configuration
+
+A complete configuration management solution including an ENC
+]
+
+.right-column[
+![monitoring](monitoring.png)
+
+## Monitoring
+
+Collect reports and facts. Monitor host configuration, report status, distribution and trends.
+]
+
+---
+name: how_it_works
+
+# How it works?
+
+![architecture](foreman_architecture.png)
+
+---
+class: center, middle
+
+# Let's see it in action
+
+---
+name:compute_resources
+
+# We talk to
+
+.right-column[
+* Baremetal
+* Virtualization
+  * libvirt
+  * oVirt
+  * XEN
+* Docker
+]
+.left-column[
+* Clouds
+  * Amazon EC2
+  * Google Compute Engine
+  * OpenStack
+  * Rackspace
+  * VMware vSphere
+  * Microsoft Azure
+  * DigitalOcean
+  * OpenNebula
+  * CloudStack
+]
+
+---
+
+# We can provision
+
+* RHEL and derivatives (CentOS, Scientific Linux, Oracle Linux)
+* Fedora
+* Ubuntu
+* Debian
+* OpenSUSE
+* SLES
+* CoreOS
+* Solaris
+* FreeBSD
+* Juniper Junos
+* Cisco NX-OS
+* Windows
+
+---
+
+# We integrate with
+
+* Chef, Puppet, Salt, Ansible
+* Pulp (content management)
+* OpenSCAP (security compliance)
+* Slack, Hubot (notifications)
+* Icinga 2, Sentry, Abrt (monitoring)
+* Cockpit
+* [and many more](http://projects.theforeman.org/projects/foreman/wiki/List_of_Plugins)
+
+---
+
+# Thank you - questions?
+
+* [This presentation](https://ares.github.io/presentations/foreman_and_chef/index.html)
+* [Foreman Chef plugin](https://github.com/theforeman/foreman_chef/)
+* [Plugin documentation](https://theforeman.org/plugins/foreman_chef/)
+
+.center[![Presentation link](qrcode.svg)]
+
+</textarea>
+<script src="../remark-latest.min.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+  var slideshow = remark.create({
+      // Set the slideshow display ratio
+      // Default: '4:3'
+      // Alternatives: '16:9', ...
+      ratio: '4:3',
+
+      // Navigation options
+      navigation: {
+        // Enable or disable navigating using scroll
+        // Default: true
+        // Alternatives: false
+        scroll: true,
+
+        // Enable or disable navigation using touch
+        // Default: true
+        // Alternatives: false
+        touch: true,
+
+        // Enable or disable navigation using click
+        // Default: false
+        // Alternatives: true
+        click: false
+      },
+
+      // Customize slide number label, either using a format string..
+      slideNumberFormat: 'Slide %current% of %total%',
+      // .. or by using a format function
+      slideNumberFormat: function (current, total) {
+        // return 'Slide ' + current + ' of ' + total;
+        return '';
+      },
+
+      // Enable or disable counting of incremental slides in the slide counting
+      countIncrementalSlides: false,
+
+      // Highlight lines in code examples prefixed with * by yellow background
+      highlightLines: false,
+
+      // Alternatives: arta, ascetic, dark, default, far, github, googlecode, idea, ir_black, magula, monokai, rainbow,
+      // solarized-dark, solarized-light, sunburst, tomorrow, tomorrow-night-blue, tomorrow-night-bright,
+      // tomorrow-night, tomorrow-night-eighties, vs, zenburn.
+
+      // black variant sunburst, white variant github or maguka
+      highlightStyle: 'sunburst'
+    });
+</script>
+</body>
+</html>
