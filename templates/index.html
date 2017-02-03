@@ -33,34 +33,6 @@
       font-size: 18px;
     }
 
-    .rendering,
-    .input-validations,
-    .output-validations,
-    .error_messages,
-    .line_number,
-    .extend,
-    .context,
-    .sharing,
-    .metadata {
-      color: #980000;
-    }
-
-    .review1 .sharing {
-      color: #006c19;
-    }
-
-    .review2 .error_messages {
-      color: #006c19;
-    }
-
-    .review2 .extend, .review2 .context {
-      color: #b8a61c;
-    }
-
-    .review3 .metadata, .review3 .input-validations, .review3 .rendering {
-      color: #b8a61c;
-    }
-
     .footnote-left {
       position: absolute;
       bottom: 3em;
@@ -102,15 +74,15 @@ class: center, middle
 
 # Foreman Templates
 
-* Text document with Embedded Ruby
+* plain text with Embedded Ruby
 
 --
 
-* Evaluates Ruby on demand
+* Ruby is evaluated during rendering
 
 --
 
-* Output can be any text format e.g. kickstart, preseed, shell script
+* output can be any text format e.g. kickstart, preseed, shell script
 
 --
 
@@ -160,15 +132,15 @@ firewall --<%= @host.operatingsystem.major.to_i >= 6 ? 'service=' : '' %>ssh
 
 --
 
-* build your own macros
-
---
-
 * see available macros at [Template Writing wiki](http://projects.theforeman.org/projects/foreman/wiki/templatewriting)
 
 --
 
 * later should be moved to [developer handbook](https://theforeman.org/handbook.html)
+
+--
+
+* build your own macros
 
 ---
 
@@ -233,15 +205,15 @@ Let's see an example
 
 --
 
-* `indent` macro can help
-
---
-
 * spaces in erb are not significant
 
 --
 
 * use `<%-` to keep inner alignment with `<%=`
+
+--
+
+* `indent` macro can help
 
 ---
 
@@ -294,7 +266,7 @@ hello <%= @target %>
 
 ---
 
-# Other ERB specifics
+# ERB - common problems
 
 * `case` expression common mistakes
 
@@ -312,13 +284,13 @@ hello <%= @target %>
 
 ---
 
-# Debugging
+# Debugging - turn off the safe mode
 
-* Turn off the safe mode and see the trace !PR
+* See the trace [(Foreman 1.15+)](https://github.com/theforeman/foreman/pull/4247)
 
 --
 
-* Turn off the safe mode and use `template_logger.fatal "debug message"`
+* Use `template_logger.fatal "debug message"`
 
 --
 
@@ -337,24 +309,21 @@ hello <%= @target %>
 * If you have 100+ hosts, previewing might not work [until this is merged](https://github.com/theforeman/foreman/pull/4213)
 
 ---
-name:other-challenges
+# Templates management
 
-# Other challenges
-
-* .rendering[can't reliably preview prior rendering]
-* .input-validations[no inputs specification]
-* .output-validations[output validators]
-* .error_messages[weird error messages, e.g. undefined method id on nil]
-* .line_number[no line number information (except for unsafe mode)]
-* .extend[can't extend from plugins]
-* .context[context impact - Organizations and Locations, Authorization]
-* .sharing[templates sharing and updating]
-* .sharing[vcs with external tools e.g. darcs, mercurial]
-* .metadata[metadata makes template unreadable]
+* sharing
 
 --
 
-Solutions? Let's see...
+* updating
+
+--
+
+* templates are overriden during each db:seed if there's no audit
+
+--
+
+* vcs with external tools e.g. git, darcs, mercurial
 
 ---
 
@@ -385,23 +354,11 @@ foreman-rake templates:import verbose=yes
 foreman-rake templates:export repo=/tmp/templates
 ```
 
-!DEMO
-
----
-
-name: review1
-template: other-challenges
-class: review1
-
 ---
 
 # Extending from plugins
 
 * Plugins need to extend specific places
-
---
-
-* [RFC](https://github.com/theforeman/rfcs/pull/6) for this feature exists
 
 --
 
@@ -412,7 +369,6 @@ class: review1
 <%= include_extensions :post %>
 ```
 
-in plugin
 ```rb
 Foreman::Plugin.register :foreman_chef do
   register_template_extensions :post do
@@ -420,6 +376,14 @@ Foreman::Plugin.register :foreman_chef do
   end
 end
 ```
+
+--
+
+* Could be exposed to users too
+
+--
+
+* [RFC](https://github.com/theforeman/rfcs/pull/6) for this feature exists
 
 ---
 
@@ -429,33 +393,31 @@ end
 
 --
 
-* Use macros, they render better error messages
+* Use macros, they can render better error messages
 
 --
 
-* In future, proxy objects could also help
-
-```erb
-<%= @host.os_major %>
-```
-
-instead of
+* In future, macro on proxy objects could also help
 
 ```erb
 <%= @host.operatingsystem.major.to_i %>
 ```
 
----
+instead of
 
-name: review2
-template: review1
-class: review2
+```erb
+<%= @host.os_major %>
+```
 
 ---
 
 # Template inputs
 
 * Let's look at Job templates inputs
+
+--
+
+* Previewing even without values
 
 --
 
@@ -467,11 +429,7 @@ class: review2
 
 --
 
-* Previewing even without values
-
---
-
-* We could warn at snippet call
+* We could warn early, when snippet is called
 
 --
 
@@ -481,11 +439,15 @@ class: review2
 
 # Metadata refactor
 
-* Useful when sharing
+* We require metadata for sharing templates
 
 --
 
-* Holds OS info, name, inputs
+* Holds OS info, name
+
+--
+
+* They also need to describe inputs
 
 --
 
@@ -495,21 +457,15 @@ class: review2
 
 * Can be automatically generated or kept on export
 
----
+--
 
-name: review3
-template: review2
-class: review3
+* An example of job template [metadata](https://github.com/theforeman/community-templates/blob/develop/job_templates/package_action_-_ssh_default.erb)
 
 ---
 
 # Few less known facts
 
-* Templates are overriden during each db:seed if there's no audit
-
---
-
-* Permissions for locking/unlocking
+* Workflow with for locking/unlocking
 
 --
 
@@ -517,7 +473,7 @@ class: review3
 
 --
 
-* !Editor shortcuts and modes
+* Editor shortcuts and modes
 
 ---
 
@@ -525,8 +481,10 @@ class: review3
 
 * [This presentation](http://ares.github.io/presentations/templates/index.html)
 * [Template Writing wiki page](http://projects.theforeman.org/projects/foreman/wiki/templatewriting)
-* [Refactoring PR](https://github.com/theforeman/community-templates/pull/348)
+* [Kickstart networking refactoring PR](https://github.com/theforeman/community-templates/pull/348)
+* [templates extending RFC](https://github.com/theforeman/rfcs/pull/6)
 * [foreman_templates plugin](https://github.com/theforeman/foreman_templates)
+* [metadata example](https://github.com/theforeman/community-templates/blob/develop/job_templates/package_action_-_ssh_default.erb)
 
 .center[![Presentation link](qrcode.svg)]
 
