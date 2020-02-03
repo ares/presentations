@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Foreman templating engine - best practises and future</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+    body {
+      font-family: 'Droid Serif';
+    }
+    h1, h2, h3 {
+      font-family: 'Yanone Kaffeesatz';
+      font-weight: normal;
+    }
+    .remark-code {
+      font-family: 'Ubuntu Mono';
+      font-size: 25px;
+    }
+
+    .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+        font-size: 28px;
+      }
+
+    .remark-slide-content {
+      font-size: 28px;
+    }
+
+    .footnote-left {
+      position: absolute;
+      bottom: 3em;
+      left: 3em;
+    }
+
+    .footnote-right {
+      position: absolute;
+      bottom: 3em;
+      right: 3em;
+    }
+
+    .footnote-right img {
+      height: 100px;
+    }
+
+    a, a > code {
+      color: rgb(249, 38, 114);
+      text-decoration: none;
+    }
+
+    .green {
+      color: rgb(0, 255, 0);
+    }
+  </style>
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+# Creating reports based on Foreman data
+
+.footnote-left[Marek Hulán <br> [mhulan@redhat.com](mailto:mhulan@redhat.com)]
+.footnote-right[![Foreman logo](foreman-web.svg) <br> Cfgmgmt camp 2020] <br>
+---
+
+# Report templates 101
+
+* plain text with Embedded Ruby
+
+--
+
+* Ruby is evaluated during rendering
+
+--
+
+* output can be any text format e.g. csv, yaml, json, html, xml
+
+--
+
+* Similar to Provisioning, Partition tables and Job templates
+
+---
+
+# Embedded Ruby
+
+* inject Ruby code using `<%  %>`
+
+--
+
+* output the result of expression by `<%= %>`
+
+--
+
+* comment tags `<%# %>`
+
+--
+
+* trim whitespace by dash `<%- -%>`
+
+--
+
+example of simple CSV report:
+```erb
+<%- load_hosts.each_record do |host| -%>
+<%=   host.name -%>,<%= host.ip -%>,<%= host.mac %>
+<%- end -%>
+```
+---
+
+# Basic building blocks
+
+* loader macros, e.g. `load_hosts`, `load_organizations`
+
+--
+
+* whitelisted methods on loaded objects
+
+--
+
+* other useful macros e.g. number_to_currency, number_with_precision
+
+--
+
+* report building macros 
+  * report_row
+  * report_render
+  * report_headers
+
+---
+
+# Loaders
+
+* respect current user permissions and organizations/locations
+
+--
+
+* process records in configurable batches
+  * `load_hosts(batch: 100)`
+
+--
+
+* allow searching using the Foreman search syntax
+  * `load_hosts(search: 'owner = mhulan')`
+
+--
+
+* allow preloading of other resources to avoid additional SQL queries
+  * `load_hosts(preload: [ :organization ])`
+
+---
+
+# Safemode
+
+* whitelist of safe methods - global and object specific
+
+--
+
+* prevents malicious code execution, such as:
+  * `<% Host.destroy_all %>`
+  * `<%= Setting.root_pass %>`
+  * `<% exec "rm -rf /" %>`
+
+--
+
+* can be disabled via provisioning setting
+
+---
+
+# Documentation of available macros
+
+* Help tab when editting the template
+
+--
+
+* generated documentation using apipie-dsl
+
+--
+
+* still work in progress, easy contribution, try yourself on hackday 
+
+---
+
+# Real world example
+
+Let's build a report counting resources usage per organization
+
+source code: https://bit.ly/36T5tPN
+
+---
+
+# Templates management
+
+* sharing - import/export
+
+--
+
+* default templates are overriden during each db:seed
+
+--
+
+* foreman_templates plugin
+
+---
+
+# Performance tips
+
+* when done right, faster than API queries
+* findings on system with 60k hosts, 30k erratas, 12GB reports on applicable errata template
+  * use hammer report-template generate (instead of schedule)
+  * don't store objects in memory, sometimes `.to_s` may be necessary
+  * use loaders and preload associations
+* batches are critical even for associations
+* use select to load only needed data
+* we can do better
+
+---
+
+# Thank you - questions?
+
+* [This presentation](http://ares.github.io/presentations/report_templates/index.html)
+* [foreman_templates plugin](https://github.com/theforeman/foreman_templates)
+* [apipie-dsl project](https://github.com/ofedoren/apipie-dsl)
+
+.center[![Presentation link](qr_code.png)]
+
+</textarea>
+<script src="../remark-latest.min.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+  var slideshow = remark.create({
+      // Set the slideshow display ratio
+      // Default: '4:3'
+      // Alternatives: '16:9', ...
+      ratio: '4:3',
+
+      // Navigation options
+      navigation: {
+        // Enable or disable navigating using scroll
+        // Default: true
+        // Alternatives: false
+        scroll: true,
+
+        // Enable or disable navigation using touch
+        // Default: true
+        // Alternatives: false
+        touch: true,
+
+        // Enable or disable navigation using click
+        // Default: false
+        // Alternatives: true
+        click: false
+      },
+
+      // Customize slide number label, either using a format string..
+      slideNumberFormat: 'Slide %current% of %total%',
+      // .. or by using a format function
+      slideNumberFormat: function (current, total) {
+        // return 'Slide ' + current + ' of ' + total;
+        return '';
+      },
+
+      // Enable or disable counting of incremental slides in the slide counting
+      countIncrementalSlides: false,
+
+      // Highlight lines in code examples prefixed with * by yellow background
+      highlightLines: false,
+
+      // Alternatives: arta, ascetic, dark, default, far, github, googlecode, idea, ir_black, magula, monokai, rainbow,
+      // solarized-dark, solarized-light, sunburst, tomorrow, tomorrow-night-blue, tomorrow-night-bright,
+      // tomorrow-night, tomorrow-night-eighties, vs, zenburn.
+
+      // black variant sunburst, white variant github or maguka
+      highlightStyle: 'sunburst'
+    });
+</script>
+</body>
+</html>
